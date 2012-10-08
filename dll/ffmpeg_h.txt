@@ -1,0 +1,108 @@
+Unknown help option ''.
+Hyper fast Audio and Video encoder
+usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
+
+Getting help:
+    -h      -- print basic options
+    -h long -- print more options
+    -h full -- print all options (including all format and codec specific options, very long)
+    See man ffmpeg for detailed description of the options.
+
+Print help / information / capabilities:
+-L                  show license
+-h topic            show help
+-? topic            show help
+-help topic         show help
+--help topic        show help
+-version            show version
+-formats            show available formats
+-codecs             show available codecs
+-decoders           show available decoders
+-encoders           show available encoders
+-bsfs               show available bit stream filters
+-protocols          show available protocols
+-filters            show available filters
+-pix_fmts           show available pixel formats
+-layouts            show standard channel layouts
+-sample_fmts        show available audio sample formats
+
+Global options (affect whole program instead of just one file:
+-loglevel loglevel  set libav* logging level
+-v loglevel         set libav* logging level
+-debug flags        set debug flags
+-fdebug flags       set debug flags
+-report             generate a report
+-max_alloc bytes    set maximum size of a single allocated block
+-y                  overwrite output files
+-n                  do not overwrite output files
+-stats              print progress report during encoding
+-bits_per_raw_sample number  set the number of bits per raw sample
+-croptop size       Removed, use the crop filter instead
+-cropbottom size    Removed, use the crop filter instead
+-cropleft size      Removed, use the crop filter instead
+-cropright size     Removed, use the crop filter instead
+-padtop size        Removed, use the pad filter instead
+-padbottom size     Removed, use the pad filter instead
+-padleft size       Removed, use the pad filter instead
+-padright size      Removed, use the pad filter instead
+-padcolor color     Removed, use the pad filter instead
+-vol volume         change audio volume (256=normal)
+
+Per-file main options:
+-f fmt              force format
+-i filename         input file name
+-c codec            codec name
+-codec codec        codec name
+-pre preset         preset name
+-map_metadata outfile[,metadata]:infile[,metadata]  set metadata information of outfile from infile
+-t duration         record or transcode "duration" seconds of audio/video
+-fs limit_size      set the limit file size in bytes
+-ss time_off        set the start time offset
+-timestamp time     set the recording timestamp ('now' to set the current time)
+-metadata string=string  add metadata
+-target type        specify target file type ("vcd", "svcd", "dvd", "dv", "dv50", "pal-vcd", "ntsc-svcd", ...)
+-frames number      set the number of frames to record
+-filter filter_list  set stream filterchain
+
+Video options:
+-vframes number     set the number of video frames to record
+-r rate             set frame rate (Hz value, fraction or abbreviation)
+-s size             set frame size (WxH or abbreviation)
+-aspect aspect      set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)
+-bits_per_raw_sample number  set the number of bits per raw sample
+-croptop size       Removed, use the crop filter instead
+-cropbottom size    Removed, use the crop filter instead
+-cropleft size      Removed, use the crop filter instead
+-cropright size     Removed, use the crop filter instead
+-padtop size        Removed, use the pad filter instead
+-padbottom size     Removed, use the pad filter instead
+-padleft size       Removed, use the pad filter instead
+-padright size      Removed, use the pad filter instead
+-padcolor color     Removed, use the pad filter instead
+-vn                 disable video
+-vcodec codec       force video codec ('copy' to copy stream)
+-timecode hh:mm:ss[:;.]ff  set initial TimeCode value.
+-pass n             select the pass number (1 to 3)
+-vf filter list     video filters
+-b bitrate          video bitrate (please use -b:v)
+-dn                 disable data
+
+Audio options:
+-aframes number     set the number of audio frames to record
+-aq quality         set audio quality (codec-specific)
+-ar rate            set audio sampling rate (in Hz)
+-ac channels        set number of audio channels
+-an                 disable audio
+-acodec codec       force audio codec ('copy' to copy stream)
+-vol volume         change audio volume (256=normal)
+-af filter list     audio filters
+
+Subtitle options:
+-s size             set frame size (WxH or abbreviation)
+-sn                 disable subtitle
+-scodec codec       force subtitle codec ('copy' to copy stream)
+-stag fourcc/tag    force subtitle tag/fourcc
+-fix_sub_duration   fix subtitles duration
+-spre preset        set the subtitle options to the indicated preset
+
+
