@@ -9,4 +9,4 @@ ffmpegµ±Ç°°æ±¾£ºffmpeg 1.0.0
 
 protected:  	lsm
 e-mail:	    	109117198lsm@163.com
-time-version: 	2012-10-08
+time-version: 	2012-10-10

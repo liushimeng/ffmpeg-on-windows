@@ -38,7 +38,7 @@
 #endif
 #endif
 #include "../inc/g_include.h"
-
+#include "./StrongFFplugin.h"
 //#include "../libavformat/ffm.h" // not public API
 
 
@@ -72,7 +72,7 @@
 
 #include <time.h>
 
-#include "ffmpeg.h"
+#include "StrongFFmpeg.h"
 #include "cmdutils.h"
 
 #include "../inc/libavutil/avassert.h"
@@ -3183,6 +3183,8 @@ int main(int argc, char **argv)
 			}
 		}
 	}
+
+	av_register_strongffplugin();
 
     show_banner(argc, argv, options);
 

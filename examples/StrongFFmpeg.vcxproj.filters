@@ -27,7 +27,7 @@
     <ClInclude Include="cmdutils_common_opts.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ffmpeg.h">
+    <ClInclude Include="StrongFFmpeg.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ffmpeg.cpp">
+    <ClCompile Include="StrongFFmpeg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="cmdutils.c">
