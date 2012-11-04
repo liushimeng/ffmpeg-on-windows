@@ -54,6 +54,7 @@ const char *avfilter_license(void);
  */
 const AVClass *avfilter_get_class(void);
 
+
 typedef struct AVFilterContext AVFilterContext;
 typedef struct AVFilterLink    AVFilterLink;
 typedef struct AVFilterPad     AVFilterPad;
@@ -231,7 +232,7 @@ void avfilter_unref_bufferp(AVFilterBufferRef **ref);
  * to access the name and type fields; there should be no need to access
  * any other fields from outside of libavfilter.
  */
-struct AVFilterPad {
+typedef struct AVFilterPad {
     /**
      * Pad name. The name is unique among inputs and among outputs, but an
      * input may have the same name as an output. This may be NULL if this
@@ -387,7 +388,7 @@ struct AVFilterPad {
      * input pads only.
      */
     int needs_fifo;
-};
+}AVFilterPad;
 #endif
 
 /**
@@ -486,7 +487,7 @@ typedef struct AVFilter {
 } AVFilter;
 
 /** An instance of a filter */
-struct AVFilterContext {
+typedef struct AVFilterContext {
     const AVClass *av_class;        ///< needed for av_log()
 
     AVFilter *filter;               ///< the AVFilter of which this is an instance
@@ -510,7 +511,7 @@ struct AVFilterContext {
     void *priv;                     ///< private data for use by the filter
 
     struct AVFilterCommand *command_queue;
-};
+}AVFilterContext;
 
 /**
  * A link between two filters. This contains pointers to the source and
@@ -519,7 +520,7 @@ struct AVFilterContext {
  * which have been negotiated and agreed upon between the filter, such as
  * image dimensions, format, etc.
  */
-struct AVFilterLink {
+typedef struct AVFilterLink {
     AVFilterContext *src;       ///< source filter
     AVFilterPad *srcpad;        ///< output pad on the source filter
 
@@ -710,7 +711,7 @@ struct AVFilterLink {
      * filter.
      */
     int closed;
-};
+}AVFilterLink;
 
 /**
  * Link two filters together.

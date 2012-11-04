@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>F:\Download\黑影DVD中字.rmvb</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vf stickfigure=quality_no_speed=0:color_method=1</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

@@ -11,6 +11,6 @@
 #pragma comment(lib, "StrongFFplugin.lib")
 #endif
 
-extern "C" STRONGFFPLUGIN_DLL_API int av_register_strongffplugin();
+extern "C" STRONGFFPLUGIN_DLL_API int av_register_strongffplugin(void * module);
 
 #endif

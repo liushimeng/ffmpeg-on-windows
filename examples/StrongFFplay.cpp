@@ -53,6 +53,8 @@
 # include "../inc/libavfilter/buffersrc.h"
 #endif
 
+#include "./StrongFFplugin.h"
+
 #include "./SDL/inc/SDL.h"
 #include "./SDL/inc/SDL_thread.h"
 #pragma comment(lib,"SDL.lib")
@@ -3169,6 +3171,10 @@ int _tmain(int argc, char* argv[])
 			}
 		}
 	}
+	int plugin_num = 0;
+	plugin_num = av_register_strongffplugin(GetModuleHandle(NULL));
+	if(plugin_num <= 0)
+	{printf("Register StrongFFplugin Failed!\r\n");exit(2);}
 
     init_opts();
 

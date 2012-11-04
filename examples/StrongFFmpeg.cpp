@@ -3183,8 +3183,10 @@ int main(int argc, char **argv)
 			}
 		}
 	}
-
-	av_register_strongffplugin();
+	int plugin_num = 0;
+	plugin_num = av_register_strongffplugin(GetModuleHandle(NULL));
+	if(plugin_num <= 0)
+	{printf("Register StrongFFplugin Failed!\r\n");exit(2);}
 
     show_banner(argc, argv, options);
 
