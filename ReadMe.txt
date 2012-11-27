@@ -9,10 +9,14 @@ ffmpeg当前版本：ffmpeg 1.0.0
 
 protected:  	lsm
 e-mail:	    	109117198lsm@163.com
-time-version: 	2012-11-04
+time-version: 	2012-11-27
 
 说明：
-add x264Encoder
-add stickfigure filter
-例子：
-StrongFFplay -i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vf stickfigure=quality_no_speed=0:color_method=1
+add ffparse			开发人员专用工具
+add x264Encoder			视频编码器
+add stickfigure filter		视频特效滤器
+add libfaac			音频编码器
+add aacplus			音频编码器
+
+例子1：播放文件在时间10秒到20秒之间加入特效
+StrongFFplay -i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vf stickfigure=q=0:c=0:s=10000:e=20000

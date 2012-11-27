@@ -55,9 +55,10 @@
 
 #include "./StrongFFplugin.h"
 
-#include "./SDL/inc/SDL.h"
+#include "./SDL/inc/SDL_ttf.h"
 #include "./SDL/inc/SDL_thread.h"
 #pragma comment(lib,"SDL.lib")
+#pragma comment(lib,"SDL_ttf.lib")
 
 #include "cmdutils.h"
 

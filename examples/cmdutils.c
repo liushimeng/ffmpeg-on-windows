@@ -205,7 +205,7 @@ static int win32_argc = 0;
 
 /**
  * Prepare command line arguments for executable.
- * For Windows - perform wide-char to UTF-8 conversion.
+ * For Windows - perform wide-char to CP_OEMCP conversion.
  * Input arguments should be main() function arguments.
  * @param argc_ptr Arguments number (including executable)
  * @param argv_ptr Arguments list.
@@ -227,9 +227,9 @@ static void prepare_app_arguments(int *argc_ptr, char ***argv_ptr)
     if (win32_argc <= 0 || !argv_w)
         return;
 
-    /* determine the UTF-8 buffer size (including NULL-termination symbols) */
+    /* determine the CP_OEMCP buffer size (including NULL-termination symbols) */
     for (i = 0; i < win32_argc; i++)
-        buffsize += WideCharToMultiByte(CP_UTF8, 0, argv_w[i], -1,
+        buffsize += WideCharToMultiByte(CP_OEMCP, 0, argv_w[i], -1,
                                         NULL, 0, NULL, NULL);
 
     win32_argv_utf8 = av_mallocz(sizeof(char *) * (win32_argc + 1) + buffsize);
@@ -241,7 +241,7 @@ static void prepare_app_arguments(int *argc_ptr, char ***argv_ptr)
 
     for (i = 0; i < win32_argc; i++) {
         win32_argv_utf8[i] = &argstr_flat[offset];
-        offset += WideCharToMultiByte(CP_UTF8, 0, argv_w[i], -1,
+        offset += WideCharToMultiByte(CP_OEMCP, 0, argv_w[i], -1,
                                       &argstr_flat[offset],
                                       buffsize - offset, NULL, NULL);
     }

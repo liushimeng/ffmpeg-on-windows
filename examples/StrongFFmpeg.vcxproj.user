@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>-i "D:\AVTestFile\AVNormal\05外语频道宣传片.mpg" -vcodec x264Encoder -profile:v main -b:v 262144 -s 322x280 -copyts -vf stickfigure=quality_no_speed=1:color_method=0 -y D:\AVTestFile\OutPut\output.mp4</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vcodec x264Encoder -profile:v main -b:v 262144 -s 320x280 -copyts -y D:\AVTestFile\OutPut\output_strongffmpeg.mp4</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
