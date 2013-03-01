@@ -51,7 +51,7 @@
  *	}
  *      @endcode
  */
-#define main	SDL_main
+#define 	SDL_main		main//#define main	SDL_main  ------  lsm 2013-01-22
 
 /** The prototype for the application's main() function */
 extern C_LINKAGE int SDL_main(int argc, char *argv[]);

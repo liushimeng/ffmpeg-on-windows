@@ -31,7 +31,7 @@ extern "C" {
  * external API header
  */
 
-/*
+/**
  * @mainpage
  *
  * @section ffmpeg_intro Introduction
@@ -40,12 +40,13 @@ extern "C" {
  * provided by FFmpeg.
  *
  * @li @ref libavc "libavcodec" encoding/decoding library
- * @li @subpage libavfilter graph based frame editing library
+ * @li @ref lavfi "libavfilter" graph based frame editing library
  * @li @ref libavf "libavformat" I/O and muxing/demuxing library
  * @li @ref lavd "libavdevice" special devices muxing/demuxing library
  * @li @ref lavu "libavutil" common utility library
- * @li @subpage libpostproc post processing library
- * @li @subpage libswscale  color conversion and scaling library
+ * @li @ref lswr "libswresample" audio resampling, format conversion and mixing
+ * @li @ref lpp  "libpostproc" post processing library
+ * @li @ref lsws "libswscale" color conversion and scaling library
  */
 
 /**
@@ -112,43 +113,6 @@ extern "C" {
  * @}
  */
 
-
-/**
- * @defgroup preproc_misc Preprocessor String Macros
- *
- * String manipulation macros
- *
- * @{
- */
-
-#define AV_STRINGIFY(s)         AV_TOSTRING(s)
-#define AV_TOSTRING(s) #s
-
-#define AV_GLUE(a, b) a ## b
-#define AV_JOIN(a, b) AV_GLUE(a, b)
-
-#define AV_PRAGMA(s) _Pragma(#s)
-
-/**
- * @}
- */
-
-/**
- * @defgroup version_utils Library Version Macros
- *
- * Useful to check and match library version in order to maintain
- * backward compatibility.
- *
- * @{
- */
-
-#define AV_VERSION_INT(a, b, c) (a<<16 | b<<8 | c)
-#define AV_VERSION_DOT(a, b, c) a ##.## b ##.## c
-#define AV_VERSION(a, b, c) AV_VERSION_DOT(a, b, c)
-
-/**
- * @}
- */
 
 /**
  * @addtogroup lavu_ver

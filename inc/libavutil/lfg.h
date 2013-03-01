@@ -25,8 +25,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef struct {
+typedef struct AVLFG {
     unsigned int state[64];
     int index;
 } AVLFG;

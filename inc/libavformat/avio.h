@@ -30,7 +30,7 @@ extern "C" {
  * Buffered I/O operations
  */
 
-#include "../g_common.h"
+#include <stdint.h>
 
 #include "../libavutil/common.h"
 #include "../libavutil/dict.h"
@@ -399,8 +399,23 @@ int avio_open2(AVIOContext **s, const char *url, int flags,
  * resource.
  *
  * @return 0 on success, an AVERROR < 0 on error.
+ * @see avio_closep
  */
 int avio_close(AVIOContext *s);
+
+/**
+ * Close the resource accessed by the AVIOContext *s, free it
+ * and set the pointer pointing to it to NULL.
+ * This function can only be used if s was opened by avio_open().
+ *
+ * The internal buffer is automatically flushed before closing the
+ * resource.
+ *
+ * @return 0 on success, an AVERROR < 0 on error.
+ * @see avio_close
+ */
+int avio_closep(AVIOContext **s);
+
 
 /**
  * Open a write only memory stream.

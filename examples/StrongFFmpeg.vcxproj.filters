@@ -27,15 +27,12 @@
     <ClInclude Include="cmdutils_common_opts.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="StrongFFmpeg.h">
+    <ClInclude Include="ffmpeg.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="StrongFFmpeg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="cmdutils.c">
@@ -48,6 +45,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ffmpeg_filter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

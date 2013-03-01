@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created on October 5, 2012 by texi2html 1.82 -->
+<!-- Created on February 23, 2013 by texi2html 1.82 -->
 <!--
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -12,79 +12,21 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 
 -->
 <head>
-<title>FFmpeg documentation : : </title>
+<title>FFmpeg documentation : Developer </title>
 
-<meta name="description" content=": ">
-<meta name="keywords" content="FFmpeg documentation : : ">
+<meta name="description" content="Developer Documentation: ">
+<meta name="keywords" content="FFmpeg documentation : Developer ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.82">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-<!--
-a.summary-letter { text-decoration: none }
-a { color: #2D6198; }
-a:visited { color: #884488; }
-h1 a, h2 a, h3 a { text-decoration: inherit; color: inherit; }
-p { margin-left: 1em; margin-right: 1em; }
-table { margin-left: 2em; }
-pre { margin-left: 2em; }
-#footer { text-align: center; }
-#body { margin-left: 1em; margin-right: 1em; }
-body { background-color: #313131; margin: 0; }
-
-#container {
-    background-color: white;
-    color: #202020;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-h1 {
-    background-color: #7BB37B;
-    border: 1px solid #6A996A;
-    color: #151515;
-    font-size: 1.2em;
-    padding-bottom: 0.2em;
-    padding-left: 0.4em;
-    padding-top: 0.2em;
-}
-
-h2 {
-    color: #313131;
-    font-size: 1.2em;
-}
-
-h3 {
-    color: #313131;
-    font-size: 0.8em;
-    margin-bottom: -8px;
-}
-
-.note {
-    margin: 1em;
-    border: 1px solid #bbc9d8;
-    background-color: #dde1e1;
-}
-
-.important {
-    margin: 1em;
-    border: 1px solid #d26767;
-    background-color: #f8e1e1;
-}
-
--->
-</style>
-
-<link rel="icon" href="favicon.png" type="image/png" />
 <link rel="stylesheet" type="text/css" href="default.css" />
 
+<link rel="icon" href="favicon.png" type="image/png" />
 </head>
-
-<body >
+<body>
 <div id="container">
 
-<div id="body">
 <a name="SEC_Top"></a>
 <h1 class="settitle">Developer Documentation</h1>
 
@@ -104,7 +46,7 @@ h3 {
       <li><a name="toc-Comments" href="#Comments">1.4.2 Comments</a></li>
       <li><a name="toc-C-language-features" href="#C-language-features">1.4.3 C language features</a></li>
       <li><a name="toc-Naming-conventions" href="#Naming-conventions">1.4.4 Naming conventions</a></li>
-      <li><a name="toc-Miscellanous-conventions" href="#Miscellanous-conventions">1.4.5 Miscellanous conventions</a></li>
+      <li><a name="toc-Miscellaneous-conventions" href="#Miscellaneous-conventions">1.4.5 Miscellaneous conventions</a></li>
       <li><a name="toc-Editor-configuration" href="#Editor-configuration">1.4.6 Editor configuration</a></li>
     </ul></li>
     <li><a name="toc-Development-Policy" href="#Development-Policy">1.5 Development Policy</a></li>
@@ -268,31 +210,43 @@ GCC statement expressions (&lsquo;<samp>(x = ({ int y = 4; y; })</samp>&rsquo;).
 
 <a name="Naming-conventions"></a>
 <h3 class="subsection"><a href="developer.html#toc-Naming-conventions">1.4.4 Naming conventions</a></h3>
-<p>All names are using underscores (_), not CamelCase. For example, &lsquo;<samp>avfilter_get_video_buffer</samp>&rsquo; is
-a valid function name and &lsquo;<samp>AVFilterGetVideo</samp>&rsquo; is not. The exception from this are type names, like
+<p>All names should be composed with underscores (_), not CamelCase. For example,
+&lsquo;<samp>avfilter_get_video_buffer</samp>&rsquo; is an acceptable function name and
+&lsquo;<samp>AVFilterGetVideo</samp>&rsquo; is not. The exception from this are type names, like
 for example structs and enums; they should always be in the CamelCase
 </p>
-
-<p>There are following conventions for naming variables and functions:
+<p>There are the following conventions for naming variables and functions:
 </p><ul>
 <li>
 For local variables no prefix is required.
 </li><li>
-For variables and functions declared as <code>static</code> no prefixes are required.
+For variables and functions declared as <code>static</code> no prefix is required.
 </li><li>
-For variables and functions used internally by the library, <code>ff_</code> prefix
-should be used.
-For example, &lsquo;<samp>ff_w64_demuxer</samp>&rsquo;.
+For variables and functions used internally by a library an <code>ff_</code>
+prefix should be used, e.g. &lsquo;<samp>ff_w64_demuxer</samp>&rsquo;.
 </li><li>
 For variables and functions used internally across multiple libraries, use
 <code>avpriv_</code>. For example, &lsquo;<samp>avpriv_aac_parse_header</samp>&rsquo;.
 </li><li>
-For exported names, each library has its own prefixes. Just check the existing
-code and name accordingly.
+Each library has its own prefix for public symbols, in addition to the
+commonly used <code>av_</code> (<code>avformat_</code> for libavformat,
+<code>avcodec_</code> for libavcodec, <code>swr_</code> for libswresample, etc).
+Check the existing code and choose names accordingly.
+Note that some symbols without these prefixes are also exported for
+retro-compatibility reasons. These exceptions are declared in the
+<code>lib&lt;name&gt;/lib&lt;name&gt;.v</code> files.
 </li></ul>
 
-<a name="Miscellanous-conventions"></a>
-<h3 class="subsection"><a href="developer.html#toc-Miscellanous-conventions">1.4.5 Miscellanous conventions</a></h3>
+<p>Furthermore, name space reserved for the system should not be invaded.
+Identifiers ending in <code>_t</code> are reserved by
+<a href="http://pubs.opengroup.org/onlinepubs/007904975/functions/xsh_chap02_02.html#tag_02_02_02">POSIX</a>.
+Also avoid names starting with <code>__</code> or <code>_</code> followed by an uppercase
+letter as they are reserved by the C standard. Names starting with <code>_</code>
+are reserved at the file level and may not be used for externally visible
+symbols. If in doubt, just avoid names starting with <code>_</code> altogether.
+</p>
+<a name="Miscellaneous-conventions"></a>
+<h3 class="subsection"><a href="developer.html#toc-Miscellaneous-conventions">1.4.5 Miscellaneous conventions</a></h3>
 <ul>
 <li>
 fprintf and printf are forbidden in libavformat and libavcodec,
@@ -312,7 +266,7 @@ set shiftwidth=4
 set softtabstop=4
 set cindent
 set cinoptions=(0
-&quot; allow tabs in Makefiles
+&quot; Allow tabs in Makefiles.
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=8
 &quot; Trailing whitespace and tabs are forbidden, so highlight them.
 highlight ForbiddenWhitespace ctermbg=red guibg=red
@@ -339,8 +293,13 @@ autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@&lt;!$/
 
 <ol>
 <li>
-   Contributions should be licensed under the LGPL 2.1, including an
-   &quot;or any later version&quot; clause, or the MIT license.  GPL 2 including
+   Contributions should be licensed under the
+   <a href="http://www.gnu.org/licenses/lgpl-2.1.html">LGPL 2.1</a>,
+   including an &quot;or any later version&quot; clause, or, if you prefer
+   a gift-style license, the
+   <a href="http://www.isc.org/software/license/">ISC</a> or
+   <a href="http://mit-license.org/">MIT</a> license.
+   <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL 2</a> including
    an &quot;or any later version&quot; clause is also acceptable, but LGPL is
    preferred.
 </li><li>
@@ -350,6 +309,13 @@ autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@&lt;!$/
    You can commit unfinished stuff (for testing etc), but it must be disabled
    (#ifdef etc) by default so it does not interfere with other developers&rsquo;
    work.
+</li><li>
+   The commit message should have a short first line in the form of
+   a &lsquo;<samp>topic: short description</samp>&rsquo; as a header, separated by a newline
+   from the body consisting of an explanation of why the change is necessary.
+   If the commit fixes a known bug on the bug tracker, the commit message
+   should include its bug ID. Referring to the issue on the bug tracker does
+   not exempt you from writing an excerpt of the bug in the commit message.
 </li><li>
    You do not have to over-test things. If it works for you, and you think it
    should work for others, then commit. If your code has problems
@@ -439,7 +405,8 @@ autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@&lt;!$/
     (e.g. addition of a function to the public API or extension of an
     existing data structure).
     Incrementing the third component means a noteworthy binary compatible
-    change (e.g. encoder bug fix that matters for the decoder).
+    change (e.g. encoder bug fix that matters for the decoder). The third
+    component always starts at 100 to distinguish FFmpeg from Libav.
 </li><li>
     Compiler warnings indicate potential bugs or code with bad style. If a type of
     warning always points to correct and clean code, that warning should
@@ -454,8 +421,6 @@ autocmd InsertEnter * match ForbiddenWhitespace /\t\|\s\+\%#\@&lt;!$/
 </li></ol>
 
 <p>We think our rules are not too hard. If you have comments, contact us.
-</p>
-<p>Note, these rules are mostly borrowed from the MPlayer project.
 </p>
 <p><a name="Submitting-patches"></a>
 </p><a name="Submitting-patches-1"></a>
@@ -480,17 +445,19 @@ The tool is located in the tools directory.
 <p>Run the <a href="#Regression-tests">Regression tests</a> before submitting a patch in order to verify
 it does not cause unexpected problems.
 </p>
-<p>Patches should be posted as base64 encoded attachments (or any other
-encoding which ensures that the patch will not be trashed during
-transmission) to the ffmpeg-devel mailing list, see
-<a href="http://lists.ffmpeg.org/mailman/listinfo/ffmpeg-devel">http://lists.ffmpeg.org/mailman/listinfo/ffmpeg-devel</a>
-</p>
 <p>It also helps quite a bit if you tell us what the patch does (for example
 &rsquo;replaces lrint by lrintf&rsquo;), and why (for example &rsquo;*BSD isn&rsquo;t C99 compliant
 and has no lrint()&rsquo;)
 </p>
 <p>Also please if you send several patches, send each patch as a separate mail,
 do not attach several unrelated patches to the same mail.
+</p>
+<p>Patches should be posted to the
+<a href="http://lists.ffmpeg.org/mailman/listinfo/ffmpeg-devel">ffmpeg-devel</a>
+mailing list. Use <code>git send-email</code> when possible since it will properly
+send patches without requiring extra care. If you cannot, then send patches
+as base64-encoded attachments, so your patch is not trashed during
+transmission.
 </p>
 <p>Your patch will be reviewed on the mailing list. You will likely be asked
 to make some changes and are expected to send in an improved version that
@@ -521,7 +488,7 @@ send a reminder by email. Your patch should eventually be dealt with.
     When adding new codec IDs, also add an entry to the codec descriptor
     list in &lsquo;<tt>libavcodec/codec_desc.c</tt>&rsquo;.
 </li><li>
-    If it has a fourCC, did you add it to &lsquo;<tt>libavformat/riff.c</tt>&rsquo;,
+    If it has a FourCC, did you add it to &lsquo;<tt>libavformat/riff.c</tt>&rsquo;,
     even if it is only a decoder?
 </li><li>
     Did you add a rule to compile the appropriate files in the Makefile?
@@ -554,7 +521,7 @@ send a reminder by email. Your patch should eventually be dealt with.
     Was the patch generated with git format-patch or send-email?
 </li><li>
     Did you sign off your patch? (git commit -s)
-    See <a href="http://kerneltrap.org/files/Jeremy/DCO.txt">http://kerneltrap.org/files/Jeremy/DCO.txt</a> for the meaning
+    See <a href="http://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/SubmittingPatches">http://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob_plain;f=Documentation/SubmittingPatches</a> for the meaning
     of sign off.
 </li><li>
     Did you provide a clear git commit log message?
@@ -575,8 +542,10 @@ send a reminder by email. Your patch should eventually be dealt with.
     other security issues?
 </li><li>
     Did you test your decoder or demuxer against damaged data? If no, see
-    tools/trasher and the noise bitstream filter. Your decoder or demuxer
-    should not crash or end in a (near) infinite loop when fed damaged data.
+    tools/trasher, the noise bitstream filter, and
+    <a href="http://caca.zoy.org/wiki/zzuf">zzuf</a>. Your decoder or demuxer
+    should not crash, end in a (near) infinite loop, or allocate ridiculous
+    amounts of memory when fed damaged data.
 </li><li>
     Does the patch not mix functional and cosmetic changes?
 </li><li>
@@ -620,6 +589,9 @@ send a reminder by email. Your patch should eventually be dealt with.
     Make sure you check the return values of function and return appropriate
     error codes. Especially memory allocation functions like <code>av_malloc()</code>
     are notoriously left unchecked, which is a serious problem.
+</li><li>
+    Test your code with valgrind and or Address Sanitizer to ensure it&rsquo;s free
+    of leaks, out of array accesses, etc.
 </li></ol>
 
 <a name="Patch-review-process"></a>
@@ -675,14 +647,5 @@ message or introductionary message for the patch series that you post to
 the ffmpeg-devel mailing list, a direct link to download the sample media.
 </p>
 
-<div id="footer">
-<p>
- <font size="-1">
-  This document was generated by <em>Kyle Schwarz</em> on <em>October 5, 2012</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
- </font>
- <br>
-</div></div>
-</p>
-</body>
-</html>
-</div>
+<footer class="footer pagination-right">
+<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>February 23, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>

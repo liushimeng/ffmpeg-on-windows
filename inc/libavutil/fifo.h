@@ -145,16 +145,6 @@ static inline uint8_t *av_fifo_peek2(const AVFifoBuffer *f, int offs)
     return ptr;
 }
 
-#if FF_API_AV_FIFO_PEEK
-/**
- * @deprecated Use av_fifo_peek2() instead.
- */
-attribute_deprecated
-static inline uint8_t av_fifo_peek(AVFifoBuffer *f, int offs)
-{
-    return *av_fifo_peek2(f, offs);
-}
-#endif
 
 #ifdef __cplusplus
 }

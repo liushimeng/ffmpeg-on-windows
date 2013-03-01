@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created on October 5, 2012 by texi2html 1.82 -->
+<!-- Created on February 23, 2013 by texi2html 1.82 -->
 <!--
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -12,79 +12,21 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 
 -->
 <head>
-<title>FFmpeg documentation : : </title>
+<title>FFmpeg documentation : General </title>
 
-<meta name="description" content=": ">
-<meta name="keywords" content="FFmpeg documentation : : ">
+<meta name="description" content="General Documentation: ">
+<meta name="keywords" content="FFmpeg documentation : General ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.82">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-<!--
-a.summary-letter { text-decoration: none }
-a { color: #2D6198; }
-a:visited { color: #884488; }
-h1 a, h2 a, h3 a { text-decoration: inherit; color: inherit; }
-p { margin-left: 1em; margin-right: 1em; }
-table { margin-left: 2em; }
-pre { margin-left: 2em; }
-#footer { text-align: center; }
-#body { margin-left: 1em; margin-right: 1em; }
-body { background-color: #313131; margin: 0; }
-
-#container {
-    background-color: white;
-    color: #202020;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-h1 {
-    background-color: #7BB37B;
-    border: 1px solid #6A996A;
-    color: #151515;
-    font-size: 1.2em;
-    padding-bottom: 0.2em;
-    padding-left: 0.4em;
-    padding-top: 0.2em;
-}
-
-h2 {
-    color: #313131;
-    font-size: 1.2em;
-}
-
-h3 {
-    color: #313131;
-    font-size: 0.8em;
-    margin-bottom: -8px;
-}
-
-.note {
-    margin: 1em;
-    border: 1px solid #bbc9d8;
-    background-color: #dde1e1;
-}
-
-.important {
-    margin: 1em;
-    border: 1px solid #d26767;
-    background-color: #f8e1e1;
-}
-
--->
-</style>
-
-<link rel="icon" href="favicon.png" type="image/png" />
 <link rel="stylesheet" type="text/css" href="default.css" />
 
+<link rel="icon" href="favicon.png" type="image/png" />
 </head>
-
-<body >
+<body>
 <div id="container">
 
-<div id="body">
 <a name="SEC_Top"></a>
 <h1 class="settitle">General Documentation</h1>
 
@@ -147,7 +89,7 @@ instructions.  To enable using OpenJPEG in FFmpeg, pass <code>--enable-libopenjp
 <p>Spun off Google Android sources, OpenCore, VisualOn and Fraunhofer
 libraries provide encoders for a number of audio codecs.
 </p>
-<div class="float note">
+<div class="float alert alert-info">
 <p>OpenCORE and VisualOn libraries are under the Apache License 2.0
 (see <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a> for details), which is
 incompatible with the LGPL version 2.1 and GPL version 2. You have to
@@ -228,7 +170,7 @@ enable it.
 instructions for installing the library. Then pass <code>--enable-libx264</code> to
 configure to enable it.
 </p>
-<div class="float note">
+<div class="float alert alert-info">
 <p>x264 is under the GNU Public License Version 2 or later
 (see <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</a> for
 details), you must upgrade FFmpeg&rsquo;s license to GPL in order to use it.
@@ -270,9 +212,12 @@ library:
 <tr><td width="40%">Amazing Studio Packed Animation File</td><td width="10%"></td><td width="10%">X</td><td width="40%">Multimedia format used in game Heart Of Darkness.</td></tr>
 <tr><td width="40%">Apple HTTP Live Streaming</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Artworx Data Format</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">AFC</td><td width="10%"></td><td width="10%">X</td><td width="40%">Audio format used on the Nintendo Gamecube.</td></tr>
 <tr><td width="40%">ASF</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">AST</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Audio format used on the Nintendo Wii.</td></tr>
 <tr><td width="40%">AVI</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">AVISynth</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">AVR</td><td width="10%"></td><td width="10%">X</td><td width="40%">Audio format used on Mac.</td></tr>
 <tr><td width="40%">AVS</td><td width="10%"></td><td width="10%">X</td><td width="40%">Multimedia format used by the Creature Shock game.</td></tr>
 <tr><td width="40%">Beam Software SIFF</td><td width="10%"></td><td width="10%">X</td><td width="40%">Audio and video format used in some games by Beam Software.</td></tr>
 <tr><td width="40%">Bethesda Softworks VID</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in some games from Bethesda Softworks.</td></tr>
@@ -280,6 +225,7 @@ library:
 <tr><td width="40%">Bink</td><td width="10%"></td><td width="10%">X</td><td width="40%">Multimedia format used by many games.</td></tr>
 <tr><td width="40%">Bitmap Brothers JV</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in Z and Z95 games.</td></tr>
 <tr><td width="40%">Brute Force &amp; Ignorance</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in the game Flash Traffic: City of Angels.</td></tr>
+<tr><td width="40%">BRSTM</td><td width="10%"></td><td width="10%">X</td><td width="40%">Audio format used on the Nintendo Wii.</td></tr>
 <tr><td width="40%">BWF</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">CRI ADX</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Audio-only format used in console video games.</td></tr>
 <tr><td width="40%">Discworld II BMV</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -299,6 +245,7 @@ library:
          game and different game cutscenes repacked for use with ScummVM.</td></tr>
 <tr><td width="40%">Electronic Arts cdata</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Electronic Arts Multimedia</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in various EA games; files have extensions like WVE and UV2.</td></tr>
+<tr><td width="40%">Ensoniq Paris Audio File</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">FFM (FFserver live feed)</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">Flash (SWF)</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">Flash 9 (AVM2)</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Only embedded audio is decoded.</td></tr>
@@ -309,7 +256,7 @@ library:
 <tr><td width="40%">G.723.1</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">G.729 BIT</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">G.729 raw</td><td width="10%"></td><td width="10%">X</td></tr>
-<tr><td width="40%">GIF Animation</td><td width="10%">X</td><td width="10%"></td></tr>
+<tr><td width="40%">GIF Animation</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">GXF</td><td width="10%">X</td><td width="10%">X</td><td width="40%">General eXchange Format SMPTE 360M, used by Thomson Grass Valley
          playout servers.</td></tr>
 <tr><td width="40%">iCEDraw File</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -322,9 +269,11 @@ library:
 <tr><td width="40%">Interplay MVE</td><td width="10%"></td><td width="10%">X</td><td width="40%">Format used in various Interplay computer games.</td></tr>
 <tr><td width="40%">IV8</td><td width="10%"></td><td width="10%">X</td><td width="40%">A format generated by IndigoVision 8000 video server.</td></tr>
 <tr><td width="40%">IVF (On2)</td><td width="10%">X</td><td width="10%">X</td><td width="40%">A format used by libvpx</td></tr>
+<tr><td width="40%">IRCAM</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">LATM</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">LMLM4</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used by Linux Media Labs MPEG-4 PCI boards</td></tr>
 <tr><td width="40%">LOAS</td><td width="10%"></td><td width="10%">X</td><td width="40%">contains LATM multiplexed AAC audio</td></tr>
+<tr><td width="40%">LVF</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">LXF</td><td width="10%"></td><td width="10%">X</td><td width="40%">VR native stream format, used by Leitch/Harris&rsquo; video servers.</td></tr>
 <tr><td width="40%">Matroska</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">Matroska audio</td><td width="10%">X</td><td width="10%"></td></tr>
@@ -332,6 +281,7 @@ library:
 <tr><td width="40%">MAXIS XA</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in Sim City 3000; file extension .xa.</td></tr>
 <tr><td width="40%">MD Studio</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Metal Gear Solid: The Twin Snakes</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">Megalux Frame</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used by Megalux Ultimate Paint</td></tr>
 <tr><td width="40%">Mobotix .mxg</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Monkey&rsquo;s Audio</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Motion Pixels MVI</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -350,12 +300,14 @@ library:
 <tr><td width="40%">Material eXchange Format (MXF)</td><td width="10%">X</td><td width="10%">X</td><td width="40%">SMPTE 377M, used by D-Cinema, broadcast industry.</td></tr>
 <tr><td width="40%">Material eXchange Format (MXF), D-10 Mapping</td><td width="10%">X</td><td width="10%">X</td><td width="40%">SMPTE 386M, D-10/IMX Mapping.</td></tr>
 <tr><td width="40%">NC camera feed</td><td width="10%"></td><td width="10%">X</td><td width="40%">NC (AVIP NC4600) camera streams</td></tr>
+<tr><td width="40%">NIST SPeech HEader REsources</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">NTT TwinVQ (VQF)</td><td width="10%"></td><td width="10%">X</td><td width="40%">Nippon Telegraph and Telephone Corporation TwinVQ.</td></tr>
 <tr><td width="40%">Nullsoft Streaming Video</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">NuppelVideo</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">NUT</td><td width="10%">X</td><td width="10%">X</td><td width="40%">NUT Open Container Format</td></tr>
 <tr><td width="40%">Ogg</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">Playstation Portable PMP</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">Portable Voice Format</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">TechnoTrend PVA</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used by TechnoTrend DVB PCI boards.</td></tr>
 <tr><td width="40%">QCP</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">raw ADTS (AAC)</td><td width="10%">X</td><td width="10%">X</td></tr>
@@ -365,6 +317,7 @@ library:
 <tr><td width="40%">raw Dirac</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">raw DNxHD</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">raw DTS</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">raw DTS-HD</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">raw E-AC-3</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">raw FLAC</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">raw GSM</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -382,6 +335,7 @@ library:
 <tr><td width="40%">raw video</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">raw id RoQ</td><td width="10%">X</td><td width="10%"></td></tr>
 <tr><td width="40%">raw Shorten</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">raw TAK</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">raw TrueHD</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">raw VC-1</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">raw PCM A-law</td><td width="10%">X</td><td width="10%">X</td></tr>
@@ -419,6 +373,7 @@ library:
 <tr><td width="40%">SBG</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">SDP</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Sega FILM/CPK</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in many Sega Saturn console games.</td></tr>
+<tr><td width="40%">Silicon Graphics Movie</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Sierra SOL</td><td width="10%"></td><td width="10%">X</td><td width="40%">.sol files used in Sierra Online games.</td></tr>
 <tr><td width="40%">Sierra VMD</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in Sierra CD-ROM games.</td></tr>
 <tr><td width="40%">Smacker</td><td width="10%"></td><td width="10%">X</td><td width="40%">Multimedia format used by many games.</td></tr>
@@ -426,7 +381,7 @@ library:
 <tr><td width="40%">Smush</td><td width="10%"></td><td width="10%">X</td><td width="40%">Multimedia format used in some LucasArts games.</td></tr>
 <tr><td width="40%">Sony OpenMG (OMA)</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Audio format used in Sony Sonic Stage and Sony Vegas.</td></tr>
 <tr><td width="40%">Sony PlayStation STR</td><td width="10%"></td><td width="10%">X</td></tr>
-<tr><td width="40%">Sony Wave64 (W64)</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">Sony Wave64 (W64)</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">SoX native format</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">SUN AU format</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">Text files</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -434,6 +389,7 @@ library:
 <tr><td width="40%">Tiertex Limited SEQ</td><td width="10%"></td><td width="10%">X</td><td width="40%">Tiertex .seq files used in the DOS CD-ROM version of the game Flashback.</td></tr>
 <tr><td width="40%">True Audio</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">VC-1 test bitstream</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">Vivo</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">WAV</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">WavPack</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">WebM</td><td width="10%">X</td><td width="10%">X</td></tr>
@@ -461,6 +417,7 @@ following image formats are supported:
 <tr><td width="40%">.Y.U.V</td><td width="10%">X</td><td width="10%">X</td><td width="40%">one raw file per component</td></tr>
 <tr><td width="40%">animated GIF</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Only uncompressed GIFs are generated.</td></tr>
 <tr><td width="40%">BMP</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Microsoft BMP image</td></tr>
+<tr><td width="40%">PIX</td><td width="10%"></td><td width="10%">X</td><td width="40%">PIX is an image format used in the Argonaut BRender engine.</td></tr>
 <tr><td width="40%">DPX</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Digital Picture Exchange</td></tr>
 <tr><td width="40%">EXR</td><td width="10%"></td><td width="10%">X</td><td width="40%">OpenEXR</td></tr>
 <tr><td width="40%">JPEG</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Progressive JPEG is not supported.</td></tr>
@@ -481,6 +438,7 @@ following image formats are supported:
 <tr><td width="40%">TIFF</td><td width="10%">X</td><td width="10%">X</td><td width="40%">YUV, JPEG and some extension is not supported yet.</td></tr>
 <tr><td width="40%">Truevision Targa</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Targa (.TGA) image format</td></tr>
 <tr><td width="40%">XBM</td><td width="10%">X</td><td width="10%">X</td><td width="40%">X BitMap image format</td></tr>
+<tr><td width="40%">XFace</td><td width="10%">X</td><td width="10%">X</td><td width="40%">X-Face image format</td></tr>
 <tr><td width="40%">XWD</td><td width="10%">X</td><td width="10%">X</td><td width="40%">X Window Dump image format</td></tr>
 </table>
 
@@ -495,8 +453,6 @@ following image formats are supported:
 <tr><td width="40%">Name</td><td width="10%">Encoding</td><td width="10%">Decoding</td><td width="40%">Comments</td></tr>
 <tr><td width="40%">4X Movie</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in certain computer games.</td></tr>
 <tr><td width="40%">8088flex TMV</td><td width="10%"></td><td width="10%">X</td></tr>
-<tr><td width="40%">8SVX exponential</td><td width="10%"></td><td width="10%">X</td></tr>
-<tr><td width="40%">8SVX fibonacci</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">A64 multicolor</td><td width="10%">X</td><td width="10%"></td><td width="40%">Creates video suitable to be played on a commodore 64 (multicolor mode).</td></tr>
 <tr><td width="40%">Amazing Studio PAF Video</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">American Laser Games MM</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in games like Mad Dog McCree.</td></tr>
@@ -609,6 +565,7 @@ following image formats are supported:
 <tr><td width="40%">On2 VP5</td><td width="10%"></td><td width="10%">X</td><td width="40%">fourcc: VP50</td></tr>
 <tr><td width="40%">On2 VP6</td><td width="10%"></td><td width="10%">X</td><td width="40%">fourcc: VP60,VP61,VP62</td></tr>
 <tr><td width="40%">VP8</td><td width="10%">E</td><td width="10%">X</td><td width="40%">fourcc: VP80, encoding supported through external library libvpx</td></tr>
+<tr><td width="40%">Pinnacle TARGA CineWave YUV16</td><td width="10%"></td><td width="10%">X</td><td width="40%">fourcc: Y216</td></tr>
 <tr><td width="40%">Prores</td><td width="10%"></td><td width="10%">X</td><td width="40%">fourcc: apch,apcn,apcs,apco</td></tr>
 <tr><td width="40%">Q-team QPEG</td><td width="10%"></td><td width="10%">X</td><td width="40%">fourccs: QPEG, Q1.0, Q1.1</td></tr>
 <tr><td width="40%">QuickTime 8BPS video</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -624,7 +581,10 @@ following image formats are supported:
 <tr><td width="40%">RealVideo 4.0</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Renderware TXD (TeXture Dictionary)</td><td width="10%"></td><td width="10%">X</td><td width="40%">Texture dictionaries used by the Renderware Engine.</td></tr>
 <tr><td width="40%">RL2 video</td><td width="10%"></td><td width="10%">X</td><td width="40%">used in some games by Entertainment Software Partners</td></tr>
+<tr><td width="40%">SGI RLE 8-bit</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Sierra VMD video</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in Sierra VMD files.</td></tr>
+<tr><td width="40%">Silicon Graphics Motion Video Compressor 1 (MVC1)</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">Silicon Graphics Motion Video Compressor 2 (MVC2)</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Smacker video</td><td width="10%"></td><td width="10%">X</td><td width="40%">Video encoding used in Smacker.</td></tr>
 <tr><td width="40%">SMPTE VC-1</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Snow</td><td width="10%">X</td><td width="10%">X</td><td width="40%">experimental wavelet codec (fourcc: SNOW)</td></tr>
@@ -669,7 +629,8 @@ following image formats are supported:
 
 <table>
 <tr><td width="40%">Name</td><td width="10%">Encoding</td><td width="10%">Decoding</td><td width="40%">Comments</td></tr>
-<tr><td width="40%">8SVX audio</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">8SVX exponential</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">8SVX fibonacci</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">AAC+</td><td width="10%">E</td><td width="10%">X</td><td width="40%">encoding supported through external library libaacplus</td></tr>
 <tr><td width="40%">AAC</td><td width="10%">E</td><td width="10%">X</td><td width="40%">encoding supported through external library libfaac and libvo-aacenc</td></tr>
 <tr><td width="40%">AC-3</td><td width="10%">IX</td><td width="10%">X</td></tr>
@@ -693,15 +654,16 @@ following image formats are supported:
 <tr><td width="40%">ADPCM IMA WAV</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM IMA Westwood</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM ISS IMA</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in FunCom games.</td></tr>
+<tr><td width="40%">ADPCM IMA Dialogic</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM IMA Duck DK3</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in some Sega Saturn console games.</td></tr>
 <tr><td width="40%">ADPCM IMA Duck DK4</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in some Sega Saturn console games.</td></tr>
 <tr><td width="40%">ADPCM Microsoft</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM MS IMA</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">ADPCM Nintendo Gamecube AFC</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM Nintendo Gamecube THP</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM QT IMA</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM SEGA CRI ADX</td><td width="10%">X</td><td width="10%">X</td><td width="40%">Used in Sega Dreamcast games.</td></tr>
 <tr><td width="40%">ADPCM Shockwave Flash</td><td width="10%">X</td><td width="10%">X</td></tr>
-<tr><td width="40%">ADPCM SMJPEG IMA</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in certain Loki game ports.</td></tr>
 <tr><td width="40%">ADPCM Sound Blaster Pro 2-bit</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM Sound Blaster Pro 2.6-bit</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">ADPCM Sound Blaster Pro 4-bit</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -727,6 +689,7 @@ following image formats are supported:
 <tr><td width="40%">DSP Group TrueSpeech</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">DV audio</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">Enhanced AC-3</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">EVRC (Enhanced Variable Rate Codec)</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">FLAC (Free Lossless Audio Codec)</td><td width="10%">X</td><td width="10%">IX</td></tr>
 <tr><td width="40%">G.723.1</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">G.729</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -749,7 +712,11 @@ following image formats are supported:
 <tr><td width="40%">Opus</td><td width="10%">E</td><td width="10%">E</td><td width="40%">supported through external library libopus</td></tr>
 <tr><td width="40%">PCM A-law</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">PCM mu-law</td><td width="10%">X</td><td width="10%">X</td></tr>
-<tr><td width="40%">PCM 16-bit little-endian planar</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">PCM signed 8-bit planar</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">PCM signed 16-bit big-endian planar</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">PCM signed 16-bit little-endian planar</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">PCM signed 24-bit little-endian planar</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">PCM signed 32-bit little-endian planar</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">PCM 32-bit floating point big-endian</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">PCM 32-bit floating point little-endian</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">PCM 64-bit floating point big-endian</td><td width="10%">X</td><td width="10%">X</td></tr>
@@ -785,6 +752,7 @@ following image formats are supported:
 <tr><td width="40%">Sonic</td><td width="10%">X</td><td width="10%">X</td><td width="40%">experimental codec</td></tr>
 <tr><td width="40%">Sonic lossless</td><td width="10%">X</td><td width="10%">X</td><td width="40%">experimental codec</td></tr>
 <tr><td width="40%">Speex</td><td width="10%">E</td><td width="10%">E</td><td width="40%">supported through external library libspeex</td></tr>
+<tr><td width="40%">TAK (Tom&rsquo;s lossless Audio Kompressor)</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">True Audio (TTA)</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">TrueHD</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in HD-DVD and Blu-Ray discs.</td></tr>
 <tr><td width="40%">TwinVQ (VQF flavor)</td><td width="10%"></td><td width="10%">X</td></tr>
@@ -811,17 +779,25 @@ performance on systems without hardware floating point support).
 
 <table>
 <tr><td width="40%">Name</td><td width="10%">Muxing</td><td width="10%">Demuxing</td><td width="10%">Encoding</td><td width="10%">Decoding</td></tr>
-<tr><td width="40%">SSA/ASS</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">3GPP Timed Text</td><td width="10%"></td><td width="10%"></td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">AQTitle</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">DVB</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">DVD</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">JACOsub</td><td width="10%">X</td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">MicroDVD</td><td width="10%">X</td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">MPL2</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">MPsub (MPlayer)</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">PGS</td><td width="10%"></td><td width="10%"></td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">PJS (Phoenix)</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">RealText</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">SAMI</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">SSA/ASS</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td></tr>
 <tr><td width="40%">SubRip (SRT)</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">SubViewer v1</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">SubViewer</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
-<tr><td width="40%">3GPP Timed Text</td><td width="10%"></td><td width="10%"></td><td width="10%">X</td><td width="10%">X</td></tr>
+<tr><td width="40%">TED Talks captions</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">VobSub (IDX+SUB)</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
+<tr><td width="40%">VPlayer</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">WebVTT</td><td width="10%"></td><td width="10%">X</td><td width="10%"></td><td width="10%">X</td></tr>
 <tr><td width="40%">XSUB</td><td width="10%"></td><td width="10%"></td><td width="10%">X</td><td width="10%">X</td></tr>
 </table>
@@ -897,14 +873,5 @@ performance on systems without hardware floating point support).
 <tr><td width="40%">MXF</td><td width="10%">X</td><td width="10%">X</td></tr>
 </table>
 
-<div id="footer">
-<p>
- <font size="-1">
-  This document was generated by <em>Kyle Schwarz</em> on <em>October 5, 2012</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
- </font>
- <br>
-</div></div>
-</p>
-</body>
-</html>
-</div>
+<footer class="footer pagination-right">
+<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>February 23, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>

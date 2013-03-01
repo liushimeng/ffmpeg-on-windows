@@ -31,6 +31,8 @@ extern "C" {
 #include "./libavutil/timecode.h"
 #include "./libavutil/timestamp.h"	//extern include
 #include "./libavutil/libm.h"			//not public API
+#include "./libavutil/eval.h"
+#include "./libavutil/colorspace.h"
 #endif
 
 #if CONFIG_AVFORMAT
@@ -48,10 +50,12 @@ extern "C" {
 #include "./libavfilter/buffersink.h"
 #include "./libavfilter/buffersrc.h"
 #include "./libavfilter/avcodec.h"
+#include "./libavfilter/formats.h"
 #endif
 
 #if CONFIG_AVCODEC
 #include "./libavcodec/avcodec.h"
+#include "./libavcodec/internal.h"
 #endif
 
 #if CONFIG_SWSCALE

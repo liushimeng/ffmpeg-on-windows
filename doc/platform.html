@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created on October 5, 2012 by texi2html 1.82 -->
+<!-- Created on February 23, 2013 by texi2html 1.82 -->
 <!--
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -12,81 +12,23 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 
 -->
 <head>
-<title>FFmpeg documentation : : </title>
+<title>FFmpeg documentation : Platform Specific Information: </title>
 
-<meta name="description" content=": ">
-<meta name="keywords" content="FFmpeg documentation : : ">
+<meta name="description" content="Platform Specific Information: ">
+<meta name="keywords" content="FFmpeg documentation : Platform Specific Information: ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.82">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-<!--
-a.summary-letter { text-decoration: none }
-a { color: #2D6198; }
-a:visited { color: #884488; }
-h1 a, h2 a, h3 a { text-decoration: inherit; color: inherit; }
-p { margin-left: 1em; margin-right: 1em; }
-table { margin-left: 2em; }
-pre { margin-left: 2em; }
-#footer { text-align: center; }
-#body { margin-left: 1em; margin-right: 1em; }
-body { background-color: #313131; margin: 0; }
-
-#container {
-    background-color: white;
-    color: #202020;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-h1 {
-    background-color: #7BB37B;
-    border: 1px solid #6A996A;
-    color: #151515;
-    font-size: 1.2em;
-    padding-bottom: 0.2em;
-    padding-left: 0.4em;
-    padding-top: 0.2em;
-}
-
-h2 {
-    color: #313131;
-    font-size: 1.2em;
-}
-
-h3 {
-    color: #313131;
-    font-size: 0.8em;
-    margin-bottom: -8px;
-}
-
-.note {
-    margin: 1em;
-    border: 1px solid #bbc9d8;
-    background-color: #dde1e1;
-}
-
-.important {
-    margin: 1em;
-    border: 1px solid #d26767;
-    background-color: #f8e1e1;
-}
-
--->
-</style>
-
-<link rel="icon" href="favicon.png" type="image/png" />
 <link rel="stylesheet" type="text/css" href="default.css" />
 
+<link rel="icon" href="favicon.png" type="image/png" />
 </head>
-
-<body >
+<body>
 <div id="container">
 
-<div id="body">
 <a name="SEC_Top"></a>
-<h1 class="settitle">Platform Specific information</h1>
+<h1 class="settitle">Platform Specific Information</h1>
 
 <a name="SEC_Contents"></a>
 <h1>Table of Contents</h1>
@@ -111,8 +53,8 @@ h3 {
     <li><a name="toc-Cross-compilation-for-Windows-with-Linux-1" href="#Cross-compilation-for-Windows-with-Linux-1">4.3 Cross compilation for Windows with Linux</a></li>
     <li><a name="toc-Compilation-under-Cygwin" href="#Compilation-under-Cygwin">4.4 Compilation under Cygwin</a></li>
     <li><a name="toc-Crosscompilation-for-Windows-under-Cygwin" href="#Crosscompilation-for-Windows-under-Cygwin">4.5 Crosscompilation for Windows under Cygwin</a></li>
-  </ul>
-</li>
+  </ul></li>
+  <li><a name="toc-Plan-9" href="#Plan-9">5. Plan 9</a></li>
 </ul>
 </div>
 
@@ -189,8 +131,7 @@ or <a href="http://www.macports.org">MacPorts</a> can easily provide it.
 <h1 class="chapter"><a href="platform.html#toc-Windows">4. Windows</a></h1>
 
 <p>To get help and instructions for building FFmpeg under Windows, check out
-the FFmpeg Windows Help Forum at
-<a href="http://ffmpeg.arrozcru.org/">http://ffmpeg.arrozcru.org/</a>.
+the FFmpeg Windows Help Forum at <a href="http://ffmpeg.zeranoe.com/forum/">http://ffmpeg.zeranoe.com/forum/</a>.
 </p>
 <a name="Native-Windows-compilation-using-MinGW-or-MinGW_002dw64"></a>
 <h2 class="section"><a href="platform.html#toc-Native-Windows-compilation-using-MinGW-or-MinGW_002dw64">4.1 Native Windows compilation using MinGW or MinGW-w64</a></h2>
@@ -223,12 +164,12 @@ libavformat) as DLLs.
 <h2 class="section"><a href="platform.html#toc-Microsoft-Visual-C_002b_002b">4.2 Microsoft Visual C++</a></h2>
 
 <p>FFmpeg can be built with MSVC using a C99-to-C89 conversion utility and
-wrapper. At this time, only static builds are supported.
+wrapper.
 </p>
 <p>You will need the following prerequisites:
 </p>
 <ul>
-<li> <a href="https://github.com/rbultje/c99-to-c89/">C99-to-C89 Converter &amp; Wrapper</a>
+<li> <a href="http://download.videolan.org/pub/contrib/c99-to-c89/">C99-to-C89 Converter &amp; Wrapper</a>
 </li><li> <a href="http://code.google.com/p/msinttypes/">msinttypes</a>
 </li><li> <a href="http://www.mingw.org/">MSYS</a>
 </li><li> <a href="http://yasm.tortall.net/">YASM</a>
@@ -239,13 +180,8 @@ you want to run <a href="fate.html">FATE</a>.
 <p>To set up a proper MSVC environment in MSYS, you simply need to run
 <code>msys.bat</code> from the Visual Studio command prompt.
 </p>
-<p>Caveat: Run <code>which link</code> to see which link you are using. If it is located
-at <code>/bin/link.exe</code>, then you have the wrong link in your <code>PATH</code>.
-Either move/remove that copy, or make sure MSVC&rsquo;s link.exe is higher up in your
-<code>PATH</code> than coreutils&rsquo;.
-</p>
-<p>Place <code>c99wrap.exe</code>, <code>c99conv.exe</code>, and <code>yasm.exe</code> somewhere
-in your <code>PATH</code>.
+<p>Place <code>makedef</code>, <code>c99wrap.exe</code>, <code>c99conv.exe</code>, and <code>yasm.exe</code>
+somewhere in your <code>PATH</code>.
 </p>
 <p>Next, make sure <code>inttypes.h</code> and any other headers and libs you want to use
 are located in a spot that MSVC can see. Do so by modifying the <code>LIB</code> and
@@ -260,10 +196,21 @@ make
 make install
 </pre></td></tr></table>
 
+<p>If you wish to compile shared libraries, add <code>--enable-shared</code> to your
+configure options. Note that due to the way MSVC handles DLL imports and
+exports, you cannot compile static and shared libraries at the same time, and
+enabling shared libraries will automatically disable the static ones.
+</p>
 <p>Notes:
 </p>
 <ul>
-<li> If you wish to build with zlib support, you will have to grab a compatible
+<li> It is possible that coreutils&rsquo; <code>link.exe</code> conflicts with MSVC&rsquo;s linker.
+You can find out by running <code>which link</code> to see which <code>link.exe</code> you
+are using. If it is located at <code>/bin/link.exe</code>, then you have the wrong one
+in your <code>PATH</code>. Either move or remove that copy, or make sure MSVC&rsquo;s
+<code>link.exe</code> takes precedence in your <code>PATH</code> over coreutils&rsquo;.
+
+</li><li> If you wish to build with zlib support, you will have to grab a compatible
 zlib binary from somewhere, with an MSVC import lib, or if you wish to link
 statically, you can follow the instructions below to build a compatible
 <code>zlib.lib</code> with MSVC. Regardless of which method you use, you must still
@@ -401,14 +348,67 @@ quickly for Cygwin Ports to be up to date.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">./configure --target-os=mingw32 --enable-shared --disable-static --extra-cflags=-mno-cygwin --extra-libs=-mno-cygwin
 </pre></td></tr></table>
 
-<div id="footer">
-<p>
- <font size="-1">
-  This document was generated by <em>Kyle Schwarz</em> on <em>October 5, 2012</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
- </font>
- <br>
-</div></div>
+<a name="Plan-9"></a>
+<h1 class="chapter"><a href="platform.html#toc-Plan-9">5. Plan 9</a></h1>
+
+<p>The native <a href="http://plan9.bell-labs.com/plan9/">Plan 9</a> compiler
+does not implement all the C99 features needed by FFmpeg so the gcc
+port must be used.  Furthermore, a few items missing from the C
+library and shell environment need to be fixed.
 </p>
-</body>
-</html>
-</div>
+<ul>
+<li> GNU awk, grep, make, and sed
+
+<p>Working packages of these tools can be found at
+<a href="http://code.google.com/p/ports2plan9/downloads/list">ports2plan9</a>.
+They can be installed with <a href="http://9front.org/">9front&rsquo;s</a> <code>pkg</code>
+utility by setting <code>pkgpath</code> to
+<code>http://ports2plan9.googlecode.com/files/</code>.
+</p>
+</li><li> Missing/broken <code>head</code> and <code>printf</code> commands
+
+<p>Replacements adequate for building FFmpeg can be found in the
+<code>compat/plan9</code> directory.  Place these somewhere they will be
+found by the shell.  These are not full implementations of the
+commands and are <em>not</em> suitable for general use.
+</p>
+</li><li> Missing C99 <code>stdint.h</code> and <code>inttypes.h</code>
+
+<p>Replacement headers are available from
+<a href="http://code.google.com/p/plan9front/issues/detail?id=152">http://code.google.com/p/plan9front/issues/detail?id=152</a>.
+</p>
+</li><li> Missing or non-standard library functions
+
+<p>Some functions in the C library are missing or incomplete.  The
+<code><a href="http://ports2plan9.googlecode.com/files/gcc-apelibs-1207.tbz">gcc-apelibs-1207</a></code> package from
+<a href="http://code.google.com/p/ports2plan9/downloads/list">ports2plan9</a>
+includes an updated C library, but installing the full package gives
+unusable executables.  Instead, keep the files from <code>gccbin.tgz</code>
+under <code>/386/lib/gnu</code>.  From the <code>libc.a</code> archive in the
+<code>gcc-apelibs-1207</code> package, extract the following object files and
+turn them into a library:
+</p>
+<ul>
+<li> <code>strerror.o</code>
+</li><li> <code>strtoll.o</code>
+</li><li> <code>snprintf.o</code>
+</li><li> <code>vsnprintf.o</code>
+</li><li> <code>vfprintf.o</code>
+</li><li> <code>_IO_getc.o</code>
+</li><li> <code>_IO_putc.o</code>
+</li></ul>
+
+<p>Use the <code>--extra-libs</code> option of <code>configure</code> to inform the
+build system of this library.
+</p>
+</li><li> FPU exceptions enabled by default
+
+<p>Unlike most other systems, Plan 9 enables FPU exceptions by default.
+These must be disabled before calling any FFmpeg functions.  While the
+included tools will do this automatically, other users of the
+libraries must do it themselves.
+</p>
+</li></ul>
+
+<footer class="footer pagination-right">
+<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>February 23, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>

@@ -45,22 +45,21 @@
 #define HAVE_TERMIOS_H					0		//term ios
 #define HAVE_KBHIT						1		//kb hit
 
+#define CONFIG_RTSP_DEMUXER				1		//RTSP Demuxer
+#define CONFIG_MMSH_PROTOCOL			0		//MMSH Protocol
+
 //宏开关
 #if CONFIG_LIBX264_ENCODER
 #include "./libavutil/libm.h"
 #endif
 
 #if (COMPILER_VC_WINDOWS)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define HAVE_GETPROCESSMEMORYINFO		0		//pro info
-#if HAVE_GETPROCESSMEMORYINFO
-#pragma comment(lib,"Psapi.lib")
-#endif
-
-//Windows 添加处理
+	//Windows 添加处理
 #define inline __inline 
 #include <stdlib.h>
 #include <stdio.h>
@@ -70,6 +69,7 @@ extern "C" {
 #include <stddef.h>
 #include <float.h>
 #include <windows.h>
+#include <math.h>
 
 #define		PRIu16			"I16u"
 #define		PRIu32			"I32u"
@@ -86,6 +86,20 @@ extern "C" {
 #define		CC_TYPE			"vc"
 #define		CC_VERSION		"vc10"
 #define     CC_IDENT		"ms-cl"
+
+#define HAVE_GETPROCESSMEMORYINFO		0		//pro info
+#if HAVE_GETPROCESSMEMORYINFO
+#pragma comment(lib,"Psapi.lib")
+#endif
+
+//math function
+#define		HAVE_ATANF		1
+#define		HAVE_POWF		1
+#define		HAVE_ATAN2F		1
+#define		HAVE_COSF		1
+#define		HAVE_EXPF		1
+#define		HAVE_LDEXPF		1
+#define		HAVE_SINF		1
 
 int isinf_i386(double x);
 
