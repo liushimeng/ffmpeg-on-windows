@@ -30,5 +30,11 @@ ffplay -i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vf stickfigure=q=0:c=0:s
 ffmpeg/libav 加入了 StrongFFplugin 之后就称为StrongFFmpeg ，它是跨平台的，除StrongFFplugin第三方插件以外包括：framework、ffmpeg、ffplay、ffprobe、ffpars等相关程序都是开源的，从1.1.3版本起将开启StrongFFplugin商业化道路，以个人和学习者身份可以任意使用，以商业为目的的使用将不在免费。
 使用StrongFFmpeg请购买正版，x64性能更加卓越！
 
+详细介绍：
+http://hi.baidu.com/109117198lsm/item/e27a1a1d34546c001994ec5e
+
+源码下载地址：
+https://github.com/liushimeng/ffmpeg-on-windows
+
 联系方式：
 QQ群28785698 phone：13520647302   e-mail：109117198lsm@163.com
