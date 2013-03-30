@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>"-i" "D:\AVTestFile\AVNormal\让子弹飞.mkv" "-vf" "subHang=sub_copytb=1:line_diff=2:word_diff=4:parse_mode=2:duration_offset=0:diff_bottom=0:fontsize=18:r=0:g=255:b=0:src_font=\"C:/Windows/Fonts/simhei.ttf\":src_sub=\"D:/AVTestFile/AVNormal/让子弹飞-CHD.chs-eng.srt\""</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>"-i" "D:\AVTestFile\OutPut\jingyizhilv.avfs"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

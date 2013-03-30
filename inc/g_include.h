@@ -39,6 +39,8 @@ extern "C" {
 #include "./libavformat/avformat.h"
 #include "./libavformat/avio.h"
 #include "./libavformat/url.h"
+#include "./libavformat/internal.h"
+#include "./libavformat/flv.h"
 #if CONFIG_NETWORK
 #include "./libavformat/rtsp.h"
 #endif

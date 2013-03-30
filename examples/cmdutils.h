@@ -37,6 +37,8 @@ extern "C" {
 #undef main /* We don't want SDL to override our main() */
 #endif
 
+void extra_exit(int value);
+
 /**
  * program name, defined by the program for show_version().
  */
@@ -510,7 +512,7 @@ FILE *get_preset_file(char *filename, size_t filename_size,
 
 /**
  * Realloc array to hold new_size elements of elem_size.
- * Calls exit() on failure.
+ * Calls extra_exit() on failure.
  *
  * @param array array to reallocate
  * @param elem_size size in bytes of each element

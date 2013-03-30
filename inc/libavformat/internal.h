@@ -21,6 +21,10 @@
 #ifndef AVFORMAT_INTERNAL_H
 #define AVFORMAT_INTERNAL_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include "avformat.h"
 
@@ -389,5 +393,9 @@ AVRational ff_choose_timebase(AVFormatContext *s, AVStream *st, int min_precissi
  * Generate standard extradata for AVC-Intra based on width/height and field order.
  */
 void ff_generate_avci_extradata(AVStream *st);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* AVFORMAT_INTERNAL_H */

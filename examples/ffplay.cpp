@@ -1021,12 +1021,12 @@ static void do_exit(VideoState *is)
         printf("\n");
     SDL_Quit();
     av_log(NULL, AV_LOG_QUIET, "%s", "");
-    exit(0);
+    extra_exit(0);
 }
 
 static void sigterm_handler(int sig)
 {
-    exit(123);
+    extra_exit(123);
 }
 
 static int video_open(VideoState *is, int force_set_video_mode, VideoPicture *vp)
@@ -1603,7 +1603,7 @@ static int queue_picture(VideoState *is, AVFrame *src_frame, double pts, int64_t
             AV_PIX_FMT_YUV420P, sws_flags, NULL, NULL, NULL);
         if (is->img_convert_ctx == NULL) {
             fprintf(stderr, "Cannot initialize the conversion context\n");
-            exit(1);
+            extra_exit(1);
         }
         sws_scale(is->img_convert_ctx, src_frame->data, src_frame->linesize,
                   0, vp->height, pict.data, pict.linesize);
@@ -3148,7 +3148,7 @@ static int opt_sync(void *optctx, const char *opt, const char *arg)
         av_sync_type = AV_SYNC_EXTERNAL_CLOCK;
     else {
         fprintf(stderr, "Unknown value for %s: %s\n", opt, arg);
-        exit(1);
+        extra_exit(1);
     }
     return 0;
 }
@@ -3179,7 +3179,7 @@ static void opt_input_file(void *optctx, const char *filename)
     if (input_filename) {
         fprintf(stderr, "Argument '%s' provided as input filename, but '%s' was already specified.\n",
                 filename, input_filename);
-        exit(1);
+        extra_exit(1);
     }
     if (!strcmp(filename, "-"))
         filename = "pipe:";
@@ -3237,9 +3237,9 @@ static const OptionDef options[] = {
     { "idct", OPT_INT | HAS_ARG | OPT_EXPERT, { (void*)&idct }, "set idct algo",  "algo" },
     { "ec", OPT_INT | HAS_ARG | OPT_EXPERT, { (void*)&error_concealment }, "set error concealment options",  "bit_mask" },
     { "sync", HAS_ARG | OPT_EXPERT, { (void*)opt_sync }, "set audio-video sync. type (type=audio/video/ext)", "type" },
-    { "autoexit", OPT_BOOL | OPT_EXPERT, { (void*)&autoexit }, "exit at the end", "" },
-    { "exitonkeydown", OPT_BOOL | OPT_EXPERT, { (void*)&exit_on_keydown }, "exit on key down", "" },
-    { "exitonmousedown", OPT_BOOL | OPT_EXPERT, { (void*)&exit_on_mousedown }, "exit on mouse down", "" },
+    { "autoexit", OPT_BOOL | OPT_EXPERT, { (void*)&autoexit }, "extra_exit at the end", "" },
+    { "exitonkeydown", OPT_BOOL | OPT_EXPERT, { (void*)&exit_on_keydown }, "extra_exit on key down", "" },
+    { "exitonmousedown", OPT_BOOL | OPT_EXPERT, { (void*)&exit_on_mousedown }, "extra_exit on mouse down", "" },
     { "loop", OPT_INT | HAS_ARG | OPT_EXPERT, { (void*)&loop }, "set number of times the playback shall be looped", "loop count" },
     { "framedrop", OPT_BOOL | OPT_EXPERT, { (void*)&framedrop }, "drop frames when cpu is too slow", "" },
     { "infbuf", OPT_BOOL | OPT_EXPERT, { (void*)&infinite_buffer }, "don't limit the input buffer size (useful with realtime streams)", "" },
@@ -3343,7 +3343,7 @@ int _tmain(int argc, char* argv[])
 	if(LIBAVUTIL_BUILD != avutil_version())
 	{
 		printf("ffmpeg dll version is validate!\r\n");
-		exit(1);
+		extra_exit(1);
 	}
 	else
 	{
@@ -3353,7 +3353,7 @@ int _tmain(int argc, char* argv[])
 			if(str && strcmp(av_pix_fmt_descriptors[i].name,str)>0)
 			{
 				printf("ffmpeg dll version fmt is validate!\r\n");
-				exit(1);
+				extra_exit(1);
 			}
 		}
 	}
@@ -3362,7 +3362,7 @@ int _tmain(int argc, char* argv[])
 	if(plugin_num <= 0)
 	{
 		printf("Register StrongFFplugin Failed!\r\n");
-		exit(2);
+		extra_exit(2);
 	}
 
     init_opts();
@@ -3378,7 +3378,7 @@ int _tmain(int argc, char* argv[])
         show_usage();
         fprintf(stderr, "An input file must be specified\n");
         fprintf(stderr, "Use -h to get full help or, even better, run 'man %s'\n", program_name);
-        exit(1);
+        extra_exit(1);
     }
 
     if (display_disable) {
@@ -3395,7 +3395,7 @@ int _tmain(int argc, char* argv[])
     if (SDL_Init (flags)) {
         fprintf(stderr, "Could not initialize SDL - %s\n", SDL_GetError());
         fprintf(stderr, "(Did you set the DISPLAY variable?)\n");
-        exit(1);
+        extra_exit(1);
     }
 
     if (!display_disable) {

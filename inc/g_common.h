@@ -43,7 +43,8 @@
 #define HAVE_SYS_RESOURCE_H				0		//linux		system time out
 #define HAVE_GETPROCESSTIMES			0		//windows	使用外部时间
 #define HAVE_TERMIOS_H					0		//term ios
-#define HAVE_KBHIT						1		//kb hit
+#define HAVE_KBHIT						1		//key board control
+#define HAVE_PEEKNAMEDPIPE				0		//peek pipe control
 
 #define CONFIG_RTSP_DEMUXER				1		//RTSP Demuxer
 #define CONFIG_MMSH_PROTOCOL			0		//MMSH Protocol
