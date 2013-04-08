@@ -35,11 +35,11 @@ enum enFFElement
 	enFFOthers,
 };
 
-char * str_enFFName[] = {
-	"视频解码","视频编码","音频解码","音频编码","字幕解码","字幕编码","输入格式","输出格式",
-	"视频滤器","音频滤器","其他滤器","通用参数","视频色彩空间","音频采样格式","音频声道类型","音频声道布局",
-	"编解码解析器","比特流滤器","硬件加速","协议","版本信息",
-	"编译配置","其他"
+TCHAR * str_enFFName[] = {
+	_T("视频解码"),_T("视频编码"),_T("音频解码"),_T("音频编码"),_T("字幕解码"),_T("字幕编码"),_T("输入格式"),_T("输出格式"),
+	_T("视频滤器"),_T("音频滤器"),_T("其他滤器"),_T("通用参数"),_T("视频色彩空间"),_T("音频采样格式"),_T("音频声道类型"),_T("音频声道布局"),
+	_T("编解码解析器"),_T("比特流滤器"),_T("硬件加速"),_T("协议"),_T("版本信息"),
+	_T("编译配置"),_T("其他")
 };
 
 enum enFFGeneralParamType
@@ -53,8 +53,8 @@ enum enFFGeneralParamType
 	enFFOtherParams,
 };
 
-char * str_enFFParamName[] = {
-	"编解码上下文","容器格式上下文","视频色彩空间上下文","音频采样格式上下文","音视频帧","字幕处理","其他"
+TCHAR * str_enFFParamName[] = {
+	_T("编解码上下文"),_T("容器格式上下文"),_T("视频色彩空间上下文"),_T("音频采样格式上下文"),_T("音视频帧"),_T("字幕处理"),_T("其他")
 };
 
 uint64_t channel_format_id[] = {
@@ -191,7 +191,7 @@ BOOL CffparseDlg::OnInitDialog()
 	//Version
 	if(LIBAVUTIL_BUILD != avutil_version())
 	{
-		::MessageBoxA(m_hWnd,"ffmpeg dll version is validate!\r\n",NULL,MB_OK);
+		::MessageBox(m_hWnd,_T("ffmpeg dll version is validate!\r\n"),NULL,MB_OK);
 		exit(1);
 	}
 	else
@@ -201,7 +201,7 @@ BOOL CffparseDlg::OnInitDialog()
 			const char * str = av_get_pix_fmt_name((PixelFormat)i);
 			if(str && strcmp(av_pix_fmt_descriptors[i].name,str)>0)
 			{
-				AfxMessageBox("ffmpeg dll version fmt is validate!\r\n");
+				AfxMessageBox(_T("ffmpeg dll version fmt is validate!\r\n"));
 				exit(1);
 			}
 		}
@@ -218,8 +218,8 @@ BOOL CffparseDlg::OnInitDialog()
 
 	//StrongFFplugin.dll
 	bool isload = false;
-	CString strShow = "";
-	HMODULE hStrongFFplugin = ::LoadLibraryA("StrongFFplugin.dll");
+	CString strShow = _T("");
+	HMODULE hStrongFFplugin = ::LoadLibrary(_T("StrongFFplugin.dll"));
 	if(hStrongFFplugin)
 	{
 		typedef int (__cdecl * RESTRONGFFPLUGIN)(void * module);
@@ -230,18 +230,18 @@ BOOL CffparseDlg::OnInitDialog()
 			int plugin_num = 0;
 			plugin_num = av_register_strongffplugin(GetModuleHandle(NULL));
 			if(plugin_num < 0)
-			{AfxMessageBox("Register StrongFFplugin Failed!\r\n");exit(2);}
+			{AfxMessageBox(_T("Register StrongFFplugin Failed!\r\n"));exit(2);}
 			else
 			{
 				CString strNum;
-				strNum.Format("Register Number %d\r\n",plugin_num);
+				strNum.Format(_T("Register Number %d\r\n"),plugin_num);
 				strShow += strNum;
 				isload = true;
 			}
 		}
 	}
 	if(isload == false)
-	{strShow += "Cann't Find StrongFFplugin.dll\r\n";}
+	{strShow += _T("Cann't Find StrongFFplugin.dll\r\n");}
 
 	index_first = 0;
 	index_second = 0;
@@ -253,26 +253,26 @@ BOOL CffparseDlg::OnInitDialog()
 	for(num = 0;num<=enFFOthers;num++)
 	{m_CMainListBox.InsertString(num,str_enFFName[num]);}
 	CString strFormat;
-	strFormat.Format("一级分类【%d】",num);
-	m_CMainStatic.SetWindowTextA(strFormat);
+	strFormat.Format(_T("一级分类【%d】"),num);
+	m_CMainStatic.SetWindowText(strFormat);
 
 	//二级分类
 	m_CSecondListBox.ResetContent();
 	num = 0;
-	strFormat.Format("二级分类【%d】",num);
-	m_CSecondStatic.SetWindowTextA(strFormat);
+	strFormat.Format(_T("二级分类【%d】"),num);
+	m_CSecondStatic.SetWindowText(strFormat);
 
 	//三级分类
 	m_CThirdListBox.ResetContent();
 	num = 0;
-	strFormat.Format("三级分类【%d】",num);
-	m_CThirdStatic.SetWindowTextA(strFormat);
+	strFormat.Format(_T("三级分类【%d】"),num);
+	m_CThirdStatic.SetWindowText(strFormat);
 
 	//模块信息
-	m_CShowEdit.SetWindowTextA(strShow);
+	m_CShowEdit.SetWindowText(strShow);
 
 	//主界面
-	this->SetWindowTextA("ffparse 【仅供ffmpeg、ffplay、mplayer、vlc等Windows开发人员使用】");
+	this->SetWindowText(_T("ffparse 【仅供ffmpeg、ffplay、mplayer、vlc等Windows开发人员使用】"));
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -380,7 +380,7 @@ const AVClass * GetGeneralAVClass(int i)
 void CffparseDlg::OnLbnDblclkListMain()
 {
 	index_first = m_CMainListBox.GetCurSel();
-	CString strShowText = "";
+	CString strShowText = _T("");
 	m_CSecondListBox.ResetContent();
 	m_CThirdListBox.ResetContent();
 	vec_SecondIndex.clear();
@@ -816,7 +816,7 @@ void CffparseDlg::OnLbnDblclkListSecond()
 			{
 				if(i == vec_SecondIndex[index_second] && !strcmp(strSecondIndex,iformat->name))
 				{
-					strShowText.Format("ID:【0x%X】 FLAGS:0x%X\r\n",iformat->raw_codec_id,iformat->flags);
+					strShowText.Format(_T("ID:【0x%X】 FLAGS:0x%X\r\n"),iformat->raw_codec_id,iformat->flags);
 					if(iformat->priv_class)
 					{
 						AVClass * pAVClass = (AVClass *)iformat->priv_class;
@@ -824,7 +824,7 @@ void CffparseDlg::OnLbnDblclkListSecond()
 						{strShowText += pAVClass->class_name;strShowText += "\r\n";}
 						if(pAVClass->option)
 						{
-							strThirdClassName = "参数";
+							strThirdClassName = _T("参数");
 							AVOption * opt = (AVOption *)pAVClass->option;
 							for(int i=0;opt->name;i++,opt++)
 							{
@@ -837,12 +837,12 @@ void CffparseDlg::OnLbnDblclkListSecond()
 					if(iformat->long_name)
 					{
 						strShowText += iformat->long_name;
-						strShowText += "\r\n";
+						strShowText += _T("\r\n");
 					}
 					if(iformat->extensions)
 					{
 						strShowText += iformat->extensions;
-						strShowText += "\r\n";
+						strShowText += _T("\r\n");
 					}
 				}
 			}
@@ -854,15 +854,15 @@ void CffparseDlg::OnLbnDblclkListSecond()
 			{
 				if(i == vec_SecondIndex[index_second] && !strcmp(strSecondIndex,oformat->name))
 				{
-					strShowText.Format("Name:0x%X FLAGS:0x%X\r\n",oformat->name,oformat->flags);
+					strShowText.Format(_T("Name:0x%X FLAGS:0x%X\r\n"),oformat->name,oformat->flags);
 					if(oformat->priv_class)
 					{
 						AVClass * pAVClass = (AVClass *)oformat->priv_class;
 						if(pAVClass->class_name)
-						{strShowText += pAVClass->class_name;strShowText += "\r\n";}
+						{strShowText += pAVClass->class_name;strShowText += _T("\r\n");}
 						if(pAVClass->option)
 						{
-							strThirdClassName = "参数";
+							strThirdClassName = _T("参数");
 							AVOption * opt = (AVOption *)pAVClass->option;
 							for(int i=0;opt->name;i++,opt++)
 							{
@@ -875,18 +875,18 @@ void CffparseDlg::OnLbnDblclkListSecond()
 					if(oformat->long_name)
 					{
 						strShowText += oformat->long_name;
-						strShowText += "\r\n";
+						strShowText += _T("\r\n");
 					}
 					if(oformat->mime_type)
 					{
-						strShowText += "Type:";
+						strShowText += _T("Type:");
 						strShowText += oformat->mime_type;
-						strShowText += "\r\n";
+						strShowText += _T("\r\n");
 					}
 					if(oformat->extensions)
 					{
 						strShowText += oformat->extensions;
-						strShowText += "\r\n";
+						strShowText += _T("\r\n");
 					}
 					if(oformat->video_codec != CODEC_ID_NONE)
 					{
@@ -1142,7 +1142,16 @@ void ShowOpt(AVOption * opt,CString & strText)
 			strFormat.Format("Type:imagesize\r\nFlags:0x%X\r\nDefault:%s\r\nMin:%s\r\nMax:%s\r\n",opt->flags,opt->default_val.str?opt->default_val.str:"","","");
 			strText += strFormat;
 		}break;
-    //AV_OPT_TYPE_PIXEL_FMT
+	case AV_OPT_TYPE_PIXEL_FMT:
+		{
+			strFormat.Format("Type:pixel\r\nFlags:0x%X\r\nDefault:0x%I64X\r\nMin:0x%I64X\r\nMax:0x%I64X\r\n",opt->flags,opt->default_val.i64,opt->min,opt->max);
+			strText += strFormat;
+		}break;
+	case AV_OPT_TYPE_SAMPLE_FMT:
+		{
+			strFormat.Format("Type:sample\r\nFlags:0x%X\r\nDefault:0x%I64X\r\nMin:0x%I64X\r\nMax:0x%I64X\r\n",opt->flags,opt->default_val.i64,opt->min,opt->max);
+			strText += strFormat;
+		}break;
 	default:
 		{
 			strFormat.Format("Type:Unknow(0x%X)\r\nFlags:0x%X\r\nDefault:0x%I64X\r\nMin:0x%I64X\r\nMax:0x%I64X\r\n",opt->type,opt->flags,opt->default_val.i64,opt->min,opt->max);
