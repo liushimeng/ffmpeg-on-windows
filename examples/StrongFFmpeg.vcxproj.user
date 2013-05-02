@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>-i "D:/AVTestFile/AVNormal/洛杉矶之战DVD中字.rmvb" -vcodec intelAVCEncoder -b:v 1024000 -nal-hrd abr -s 1024x768 -profile:v high -level:v 4.2 -r:v 15 -acodec libmp3lame -psnr -deinterlace -copyts -y "D:/AVTestFile/OutPut/jingyizhilv.mp4"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-i "D:/AVTestFile/AVNormal/52届格莱美现场原始.mp4" -vcodec intelEncoder -s 1280x720 -r 25 -nal-hrd vbr -acodec libvo_aacenc -strict experimental -ar 44100 -ac 2 -b:a 62000 -sample_fmt s16 -copyts -y "D:/AVTestFile/OutPut/lsm_sample.mp4"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerCommandArguments>-i D:\AVTestFile\AVNormal\13外语频道招商片.mpg -y -vcodec x264Encoder -profile:v main -b:v 262144 -copyts D:\output.mp4</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>"-i" "D:/AVTestFile/AVNormal/洛杉矶之战DVD中字.rmvb" "-vcodec" "x264Encoder" "-s" "1920x1080" "-nal-hrd" "vbr" "-profile:v" "high" "-level:v" "5.1" "-r:v" "30" "-an" "-y" "D:/AVTestFile/OutPut/jingyizhilv.mp4"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

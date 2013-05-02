@@ -222,13 +222,13 @@ BOOL CffparseDlg::OnInitDialog()
 	HMODULE hStrongFFplugin = ::LoadLibrary(_T("StrongFFplugin.dll"));
 	if(hStrongFFplugin)
 	{
-		typedef int (__cdecl * RESTRONGFFPLUGIN)(void * module);
+		typedef int (__cdecl * RESTRONGFFPLUGIN)(void * module,int reg_flag);
 		RESTRONGFFPLUGIN av_register_strongffplugin = NULL;
 		av_register_strongffplugin = (RESTRONGFFPLUGIN)::GetProcAddress(hStrongFFplugin,"av_register_strongffplugin");
 		if(av_register_strongffplugin)
 		{
 			int plugin_num = 0;
-			plugin_num = av_register_strongffplugin(GetModuleHandle(NULL));
+			plugin_num = av_register_strongffplugin(GetModuleHandle(NULL),1);
 			if(plugin_num < 0)
 			{AfxMessageBox(_T("Register StrongFFplugin Failed!\r\n"));exit(2);}
 			else

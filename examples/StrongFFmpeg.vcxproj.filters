@@ -38,9 +38,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="cmdutils.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\inc\libavutil\pixdesc.c">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ffmpeg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cmdutils.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

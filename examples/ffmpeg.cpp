@@ -316,6 +316,7 @@ void term_init(void)
 #endif
 }
 
+#include <stdio.h>
 /* read a key without blocking */
 static int read_key(void)
 {
@@ -3136,7 +3137,7 @@ static int transcode(void)
         goto fail;
 
     if (stdin_interaction) {
-        av_log(NULL, AV_LOG_INFO, "Press [q] to stop, [?] for help\n");
+        av_log(0, AV_LOG_INFO, "Press [q] to stop, [?] for help\n");
     }
 
     timer_start = av_gettime();
@@ -3156,7 +3157,7 @@ static int transcode(void)
 
         /* check if there's any stream where output is still needed */
         if (!need_output()) {
-            av_log(NULL, AV_LOG_VERBOSE, "No more output streams to write to, finishing.\n");
+            av_log(0, AV_LOG_VERBOSE, "No more output streams to write to, finishing.\n");
             break;
         }
 
@@ -3165,7 +3166,7 @@ static int transcode(void)
             if (ret == AVERROR_EOF || ret == AVERROR(EAGAIN))
                 continue;
 
-            av_log(NULL, AV_LOG_ERROR, "Error while filtering.\n");
+            av_log(0, AV_LOG_ERROR, "Error while filtering.\n");
             break;
         }
 
@@ -3180,7 +3181,7 @@ static int transcode(void)
     for (i = 0; i < nb_input_streams; i++) {
         ist = input_streams[i];
         if (!input_files[ist->file_index]->eof_reached && ist->decoding_needed) {
-            output_packet(ist, NULL);
+            output_packet(ist, 0);
         }
     }
     flush_encoders();
@@ -3367,6 +3368,6 @@ int main(int argc, char * argv[])
         printf("bench: utime=%0.3fs maxrss=%ikB\n", ti / 1000000.0, maxrss);
     }
 
-    extra_exit(received_nb_signals ? 255 : 0);
+	extra_exit(received_nb_signals ? 255 : 0);
     return 0;
 }

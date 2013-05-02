@@ -45,6 +45,7 @@
 #define HAVE_TERMIOS_H					0		//term ios
 #define HAVE_KBHIT						1		//key board control
 #define HAVE_PEEKNAMEDPIPE				0		//peek pipe control
+#define HAVE_COMMANDLINETOARGVW			1		//commandline
 
 #define CONFIG_RTSP_DEMUXER				1		//RTSP Demuxer
 #define CONFIG_MMSH_PROTOCOL			0		//MMSH Protocol

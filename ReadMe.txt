@@ -9,12 +9,13 @@ ffmpeg当前版本：ffmpeg 1.1.3
 
 protected:  	lsm
 e-mail:	    	109117198lsm@163.com
-time-version: 	2013-3-30
+time-version: 	2013-5-01
 
 说明：
-x264AVCEncoder			x264视频编码器		
+x264Encoder			H264视频编码器	
+x265Encoder			H265视频编码器	
 intelAVCDecoder			intel视频解码器
-intelAVCEncoder			intel视频编码器		（实验阶段）
+intelEncoder			intel视频编码器		（实验阶段）
 libaacplus			aacplus音频编码器
 libfaac				faac音频编码器
 stickfigure			stickfigure视频特效
@@ -31,7 +32,7 @@ ffmpeg/libav 加入了 StrongFFplugin 之后就称为StrongFFmpeg ，它是跨平台的，除Stro
 使用StrongFFmpeg请购买正版，x64性能更加卓越！
 
 详细介绍：
-http://hi.baidu.com/109117198lsm/item/e27a1a1d34546c001994ec5e
+http://hi.baidu.com/109117198lsm/item/0631ed2aaeb2ee1409750876
 
 源码下载地址：
 https://github.com/liushimeng/ffmpeg-on-windows

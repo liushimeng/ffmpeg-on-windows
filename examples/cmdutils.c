@@ -59,6 +59,8 @@
 #include "../inc/g_common.h"
 static int init_report(const char *env);
 
+#include <stdio.h>
+
 struct SwsContext *sws_opts;
 SwrContext *swr_opts;
 AVDictionary *format_opts, *codec_opts;
@@ -69,6 +71,10 @@ static FILE *report_file;
 
 void extra_exit(int value)
 {
+#if _DEBUG
+	if(value)
+	{getch();}
+#endif
 	exit(value);
 }
 

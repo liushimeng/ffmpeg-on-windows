@@ -58,6 +58,7 @@ extern "C" {
 #if CONFIG_AVCODEC
 #include "./libavcodec/avcodec.h"
 #include "./libavcodec/internal.h"
+#include "./libavcodec/parser.h"
 #endif
 
 #if CONFIG_SWSCALE
