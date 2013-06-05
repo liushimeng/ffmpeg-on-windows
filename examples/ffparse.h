@@ -8,7 +8,7 @@
 	#error "在包含此文件之前包含“stdafx_ffparse.h”以生成 PCH 文件"
 #endif
 
-#include "resource.h"		// 主符号
+#include "ffparse_resource.h"		// 主符号
 
 
 // CffparseApp:

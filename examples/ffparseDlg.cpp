@@ -2,7 +2,7 @@
 // ffparseDlg.cpp : 实现文件
 //
 
-#include "stdafx_ffparse.h"
+#include "ffparse_stdafx.h"
 #include "ffparse.h"
 #include "ffparseDlg.h"
 #include "afxdialogex.h"
@@ -36,9 +36,9 @@ enum enFFElement
 };
 
 TCHAR * str_enFFName[] = {
-	_T("视频解码"),_T("视频编码"),_T("音频解码"),_T("音频编码"),_T("字幕解码"),_T("字幕编码"),_T("输入格式"),_T("输出格式"),
+	_T("视频解码"),_T("视频编码"),_T("音频解码"),_T("音频编码"),_T("字幕解码"),_T("字幕编码"),_T("容器解析"),_T("容器封裝"),
 	_T("视频滤器"),_T("音频滤器"),_T("其他滤器"),_T("通用参数"),_T("视频色彩空间"),_T("音频采样格式"),_T("音频声道类型"),_T("音频声道布局"),
-	_T("编解码解析器"),_T("比特流滤器"),_T("硬件加速"),_T("协议"),_T("版本信息"),
+	_T("编解码解析器"),_T("比特流滤器"),_T("硬件加速"),_T("协议层"),_T("版本信息"),
 	_T("编译配置"),_T("其他")
 };
 
@@ -194,18 +194,6 @@ BOOL CffparseDlg::OnInitDialog()
 		::MessageBox(m_hWnd,_T("ffmpeg dll version is validate!\r\n"),NULL,MB_OK);
 		exit(1);
 	}
-	else
-	{
-		for(int i = PIX_FMT_YUV420P;i<PIX_FMT_NB;i++)
-		{
-			const char * str = av_get_pix_fmt_name((PixelFormat)i);
-			if(str && strcmp(av_pix_fmt_descriptors[i].name,str)>0)
-			{
-				AfxMessageBox(_T("ffmpeg dll version fmt is validate!\r\n"));
-				exit(1);
-			}
-		}
-	}
 
 	//register
 	avcodec_register_all();
@@ -243,6 +231,7 @@ BOOL CffparseDlg::OnInitDialog()
 	if(isload == false)
 	{strShow += _T("Cann't Find StrongFFplugin.dll\r\n");}
 
+	//ffparse
 	index_first = 0;
 	index_second = 0;
 	index_third = 0;

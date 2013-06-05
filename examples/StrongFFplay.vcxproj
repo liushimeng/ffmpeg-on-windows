@@ -167,7 +167,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\inc\libavutil\pixdesc.c" />
     <ClCompile Include="cmdutils.c" />
     <ClCompile Include="ffplay.cpp" />
     <ClCompile Include="stdafx.cpp" />

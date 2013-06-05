@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created on February 23, 2013 by texi2html 1.82 -->
+<!-- Created on May 13, 2013 by texi2html 1.82 -->
 <!--
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -40,18 +40,19 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
   <li><a name="toc-Demuxers" href="#Demuxers">3. Demuxers</a>
   <ul class="toc">
     <li><a name="toc-applehttp" href="#applehttp">3.1 applehttp</a></li>
-    <li><a name="toc-concat" href="#concat">3.2 concat</a>
+    <li><a name="toc-concat-1" href="#concat-1">3.2 concat</a>
     <ul class="toc">
       <li><a name="toc-Syntax" href="#Syntax">3.2.1 Syntax</a></li>
       <li><a name="toc-Options" href="#Options">3.2.2 Options</a></li>
     </ul></li>
-    <li><a name="toc-image2-1" href="#image2-1">3.3 image2</a>
+    <li><a name="toc-libquvi" href="#libquvi">3.3 libquvi</a></li>
+    <li><a name="toc-image2-2" href="#image2-2">3.4 image2</a>
     <ul class="toc">
-      <li><a name="toc-Examples-1" href="#Examples-1">3.3.1 Examples</a></li>
+      <li><a name="toc-Examples-1" href="#Examples-1">3.4.1 Examples</a></li>
     </ul></li>
-    <li><a name="toc-rawvideo" href="#rawvideo">3.4 rawvideo</a></li>
-    <li><a name="toc-sbg" href="#sbg">3.5 sbg</a></li>
-    <li><a name="toc-tedcaptions" href="#tedcaptions">3.6 tedcaptions</a></li>
+    <li><a name="toc-rawvideo" href="#rawvideo">3.5 rawvideo</a></li>
+    <li><a name="toc-sbg" href="#sbg">3.6 sbg</a></li>
+    <li><a name="toc-tedcaptions" href="#tedcaptions">3.7 tedcaptions</a></li>
   </ul></li>
   <li><a name="toc-Muxers" href="#Muxers">4. Muxers</a>
   <ul class="toc">
@@ -60,7 +61,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
     <li><a name="toc-framemd5-1" href="#framemd5-1">4.3 framemd5</a></li>
     <li><a name="toc-hls-1" href="#hls-1">4.4 hls</a></li>
     <li><a name="toc-ico-1" href="#ico-1">4.5 ico</a></li>
-    <li><a name="toc-image2-2" href="#image2-2">4.6 image2</a></li>
+    <li><a name="toc-image2-1" href="#image2-1">4.6 image2</a></li>
     <li><a name="toc-md5-1" href="#md5-1">4.7 md5</a></li>
     <li><a name="toc-MOV_002fMP4_002fISMV" href="#MOV_002fMP4_002fISMV">4.8 MOV/MP4/ISMV</a></li>
     <li><a name="toc-mpegts" href="#mpegts">4.9 mpegts</a></li>
@@ -244,8 +245,23 @@ wild as errors.
 </p>
 </dd>
 <dt> &lsquo;<samp>avoid_negative_ts <var>integer</var> (<em>output</em>)</samp>&rsquo;</dt>
-<dd><p>Shift timestamps to make them positive. 1 enables, 0 disables, default
-of -1 enables when required by target format.
+<dd><p>Shift timestamps to make them positive. A value of 1 enables shifting,
+a value of 0 disables it, the default value of -1 enables shifting
+when required by the target format.
+</p>
+<p>When shifting is enabled, all output timestamps are shifted by the
+same amount. Audio, video, and subtitles desynching and relative
+timestamp differences are preserved compared to how they would have
+been without shifting.
+</p>
+<p>Also note that this affects only leading negative timestamps, and not
+non-monotonic negative timestamps.
+</p>
+</dd>
+<dt> &lsquo;<samp>flush_packets <var>integer</var> (<em>output</em>)</samp>&rsquo;</dt>
+<dd><p>Flush the underlying I/O stream after each packet. Default 1 enables it, and
+has the effect of reducing the latency; 0 disables it and may slightly
+increase performance in some cases.
 </p></dd>
 </dl>
 
@@ -282,8 +298,9 @@ the caller can decide which variant streams to actually receive.
 The total bitrate of the variant that the stream belongs to is
 available in a metadata key named &quot;variant_bitrate&quot;.
 </p>
-<a name="concat"></a>
-<h2 class="section"><a href="ffmpeg-formats.html#toc-concat">3.2 concat</a></h2>
+<p><a name="concat"></a>
+</p><a name="concat-1"></a>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-concat-1">3.2 concat</a></h2>
 
 <p>Virtual concatenation script demuxer.
 </p>
@@ -298,6 +315,12 @@ length.
 </p>
 <p>All files must have the same streams (same codecs, same time base, etc.).
 </p>
+<p>The duration of each file is used to adjust the timestamps of the next file:
+if the duration is incorrect (because it was computed using the bit-rate or
+because the file is truncated, for example), it can cause artifacts. The
+<code>duration</code> directive can be used to override the duration stored in
+each file.
+</p>
 <a name="Syntax"></a>
 <h3 class="subsection"><a href="ffmpeg-formats.html#toc-Syntax">3.2.1 Syntax</a></h3>
 
@@ -310,6 +333,8 @@ following directive is recognized:
 <dd><p>Path to a file to read; special characters and spaces must be escaped with
 backslash or single quotes.
 </p>
+<p>All subsequent directives apply to that file.
+</p>
 </dd>
 <dt> &lsquo;<samp><code>ffconcat version 1.0</code></samp>&rsquo;</dt>
 <dd><p>Identify the script type and version. It also sets the &lsquo;<samp>safe</samp>&rsquo; option
@@ -318,6 +343,15 @@ to 1 if it was to its default -1.
 <p>To make FFmpeg recognize the format automatically, this directive must
 appears exactly as is (no extra space or byte-order-mark) on the very first
 line of the script.
+</p>
+</dd>
+<dt> &lsquo;<samp><code>duration <var>dur</var></code></samp>&rsquo;</dt>
+<dd><p>Duration of the file. This information can be specified from the file;
+specifying it here may be more efficient or help if the information from the
+file is not available or accurate.
+</p>
+<p>If the duration is set for all files, then it is possible to seek in the
+whole concatenated video.
 </p>
 </dd>
 </dl>
@@ -343,8 +377,21 @@ probed and 0 otherwise.
 </dd>
 </dl>
 
-<a name="image2-1"></a>
-<h2 class="section"><a href="ffmpeg-formats.html#toc-image2-1">3.3 image2</a></h2>
+<a name="libquvi"></a>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-libquvi">3.3 libquvi</a></h2>
+
+<p>Play media from Internet services using the quvi project.
+</p>
+<p>The demuxer accepts a &lsquo;<samp>format</samp>&rsquo; option to request a specific quality. It
+is by default set to <var>best</var>.
+</p>
+<p>See <a href="http://quvi.sourceforge.net/">http://quvi.sourceforge.net/</a> for more information.
+</p>
+<p>FFmpeg needs to be built with <code>--enable-libquvi</code> for this demuxer to be
+enabled.
+</p>
+<a name="image2-2"></a>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-image2-2">3.4 image2</a></h2>
 
 <p>Image file demuxer.
 </p>
@@ -361,7 +408,7 @@ same for all the files in the sequence.
 <p>This demuxer accepts the following options:
 </p><dl compact="compact">
 <dt> &lsquo;<samp>framerate</samp>&rsquo;</dt>
-<dd><p>Set the framerate for the video stream. It defaults to 25.
+<dd><p>Set the frame rate for the video stream. It defaults to 25.
 </p></dd>
 <dt> &lsquo;<samp>loop</samp>&rsquo;</dt>
 <dd><p>If set to 1, loop over the input. Default value is 0.
@@ -454,7 +501,7 @@ size is guessed from the first image file in the sequence.
 </dl>
 
 <a name="Examples-1"></a>
-<h3 class="subsection"><a href="ffmpeg-formats.html#toc-Examples-1">3.3.1 Examples</a></h3>
+<h3 class="subsection"><a href="ffmpeg-formats.html#toc-Examples-1">3.4.1 Examples</a></h3>
 
 <ul>
 <li>
@@ -477,7 +524,7 @@ terminating with the &quot;.png&quot; suffix:
 </li></ul>
 
 <a name="rawvideo"></a>
-<h2 class="section"><a href="ffmpeg-formats.html#toc-rawvideo">3.4 rawvideo</a></h2>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-rawvideo">3.5 rawvideo</a></h2>
 
 <p>Raw video demuxer.
 </p>
@@ -508,7 +555,7 @@ the command:
 </pre></td></tr></table>
 
 <a name="sbg"></a>
-<h2 class="section"><a href="ffmpeg-formats.html#toc-sbg">3.5 sbg</a></h2>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-sbg">3.6 sbg</a></h2>
 
 <p>SBaGen script demuxer.
 </p>
@@ -538,7 +585,7 @@ timestamps up to the sound controller&rsquo;s clock accuracy, but if the user
 somehow pauses the playback or seeks, all times will be shifted accordingly.
 </p>
 <a name="tedcaptions"></a>
-<h2 class="section"><a href="ffmpeg-formats.html#toc-tedcaptions">3.6 tedcaptions</a></h2>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-tedcaptions">3.7 tedcaptions</a></h2>
 
 <p>JSON captions used for <a href="http://www.ted.com/">TED Talks</a>.
 </p>
@@ -747,8 +794,8 @@ If a PNG image is used, it must use the rgba pixel format
 </li></ul>
 
 <p><a name="image2"></a>
-</p><a name="image2-2"></a>
-<h2 class="section"><a href="ffmpeg-formats.html#toc-image2-2">4.6 image2</a></h2>
+</p><a name="image2-1"></a>
+<h2 class="section"><a href="ffmpeg-formats.html#toc-image2-1">4.6 image2</a></h2>
 
 <p>Image file muxer.
 </p>
@@ -802,10 +849,12 @@ command can be written as:
 positive number.
 </p>
 </dd>
-<dt> &lsquo;<samp>updatefirst 1|0</samp>&rsquo;</dt>
-<dd><p>If set to 1, update the first written image file again and
-again. Default value is 0.
-</p></dd>
+<dt> &lsquo;<samp>-update <var>number</var></samp>&rsquo;</dt>
+<dd><p>If <var>number</var> is nonzero, the filename will always be interpreted as just a
+filename, not a pattern, and this file will be continuously overwritten with new
+images.
+</p>
+</dd>
 </dl>
 
 <p>The image muxer supports the .Y.U.V image file format. This format is
@@ -1073,6 +1122,27 @@ syntax.
 </p><table><tr><td>&nbsp;</td><td><pre class="example">ffmpeg -i sample_left_right_clip.mpg -an -c:v libvpx -metadata stereo_mode=left_right -y stereo_clip.webm
 </pre></td></tr></table>
 
+<p>This muxer supports the following options:
+</p>
+<dl compact="compact">
+<dt> &lsquo;<samp>reserve_index_space</samp>&rsquo;</dt>
+<dd><p>By default, this muxer writes the index for seeking (called cues in Matroska
+terms) at the end of the file, because it cannot know in advance how much space
+to leave for the index at the beginning of the file. However for some use cases
+&ndash; e.g.  streaming where seeking is possible but slow &ndash; it is useful to put the
+index at the beginning of the file.
+</p>
+<p>If this option is set to a non-zero value, the muxer will reserve a given amount
+of space in the file header and then try to write the cues there when the muxing
+finishes. If the available space does not suffice, muxing will fail. A safe size
+for most use cases should be about 50kB per hour of video.
+</p>
+<p>Note that cues are only written if the output is seekable and this option will
+have no effect if it is not.
+</p>
+</dd>
+</dl>
+
 <a name="segment_002c-stream_005fsegment_002c-ssegment"></a>
 <h2 class="section"><a href="ffmpeg-formats.html#toc-segment_002c-stream_005fsegment_002c-ssegment">4.12 segment, stream_segment, ssegment</a></h2>
 
@@ -1172,6 +1242,14 @@ the segment start and end time expressed in seconds.
 auto-select this format.
 </p>
 <p><code>ext</code> is deprecated in favor or <code>csv</code>.
+</p>
+</dd>
+<dt> &lsquo;<samp>ffconcat</samp>&rsquo;</dt>
+<dd><p>Generate an ffconcat file for the created segments. The resulting file
+can be read using the FFmpeg <a href="#concat">concat</a> demuxer.
+</p>
+<p>A list file with the suffix <code>&quot;.ffcat&quot;</code> or <code>&quot;.ffconcat&quot;</code> will
+auto-select this format.
 </p>
 </dd>
 <dt> &lsquo;<samp>m3u8</samp>&rsquo;</dt>
@@ -1373,9 +1451,9 @@ the options values contain a special character or the &rsquo;:&rsquo; separator,
 must be escaped; note that this is a second level escaping.
 </p>
 <p>Example: encode something and both archive it in a WebM file and stream it
-as MPEG-TS over UDP:
+as MPEG-TS over UDP (the streams need to be explicitly mapped):
 </p>
-<table><tr><td>&nbsp;</td><td><pre class="example">ffmpeg -i ... -c:v libx264 -c:a mp2 -f tee
+<table><tr><td>&nbsp;</td><td><pre class="example">ffmpeg -i ... -c:v libx264 -c:a mp2 -f tee -map 0:v -map 0:a
   &quot;archive-20121107.mkv|[f=mpegts]udp://10.0.1.255:1234/&quot;
 </pre></td></tr></table>
 
@@ -1471,4 +1549,4 @@ online repository at <a href="http://source.ffmpeg.org">http://source.ffmpeg.org
 </p>
 
 <footer class="footer pagination-right">
-<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>February 23, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>
+<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>May 13, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>

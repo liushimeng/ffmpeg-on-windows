@@ -33,10 +33,13 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
+    <ClInclude Include="ffparse_resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx_ffparse.h">
+    <ClInclude Include="ffparse_stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +50,7 @@
     <ClCompile Include="ffparseDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\inc\libavutil\pixdesc.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx_ffparse.cpp">
+    <ClCompile Include="ffparse_stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

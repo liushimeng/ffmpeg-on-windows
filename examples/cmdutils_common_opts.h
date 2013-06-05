@@ -14,8 +14,11 @@
     { "pix_fmts"   , OPT_EXIT, {(void *) show_pix_fmts },    "show available pixel formats" },
     { "layouts"    , OPT_EXIT, {(void *) show_layouts  },    "show standard channel layouts" },
     { "sample_fmts", OPT_EXIT, {(void *) show_sample_fmts }, "show available audio sample formats" },
-    { "loglevel"   , HAS_ARG,  {(void *) opt_loglevel},      "set libav* logging level", "loglevel" },
-    { "v",           HAS_ARG,  {(void *) opt_loglevel},      "set libav* logging level", "loglevel" },
+    { "loglevel"   , HAS_ARG,  {(void *) opt_loglevel},      "set logging level", "loglevel" },
+    { "v",           HAS_ARG,  {(void *) opt_loglevel},      "set logging level", "loglevel" },
     { "report"     , 0,        {(void*)opt_report}, "generate a report" },
     { "max_alloc"  , HAS_ARG,  {(void *) opt_max_alloc},     "set maximum size of a single allocated block", "bytes" },
     { "cpuflags"   , HAS_ARG | OPT_EXPERT, {(void *) opt_cpuflags}, "force specific cpu flags", "flags" },
+#if CONFIG_OPENCL
+    { "opencl_options", HAS_ARG, {(void *) opt_opencl},      "set OpenCL environment options" },
+#endif

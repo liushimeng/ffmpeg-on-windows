@@ -26,6 +26,7 @@ avfs				avfs文件容器		(包括封装和解封装)
 
 例子1：播放文件在时间10秒到20秒之间加入特效
 ffplay -i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vf stickfigure=q=0:c=0:s=10000:e=20000
+ffplay -i "D:\AVTestFile\AVNormal\太空一号BD中字.rmvb" -vf subHang=sub_copytb=1:line_diff=2:word_diff=4:parse_mode=0:duration_offset=0:diff_bottom=0:fontsize=18:r=0:g=255:b=0:src_font="C:/Windows/Fonts/simhei.ttf":src_sub="D:/AVTestFile/AVNormal/让子弹飞-CHD.chs-eng.srt"(这个路径可以使用16进制数值)
 
 简要说明：
 ffmpeg/libav 加入了 StrongFFplugin 之后就称为StrongFFmpeg ，它是跨平台的，除StrongFFplugin第三方插件以外包括：framework、ffmpeg、ffplay、ffprobe、ffpars等相关程序都是开源的，从1.1.3版本起将开启StrongFFplugin商业化道路，以个人和学习者身份可以任意使用，以商业为目的的使用将不在免费。

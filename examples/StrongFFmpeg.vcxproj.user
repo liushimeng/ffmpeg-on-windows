@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>-i "D:/AVTestFile/AVNormal/52届格莱美现场原始.mp4" -vcodec intelEncoder -s 1280x720 -r 25 -nal-hrd vbr -acodec libvo_aacenc -strict experimental -ar 44100 -ac 2 -b:a 62000 -sample_fmt s16 -copyts -y "D:/AVTestFile/OutPut/lsm_sample.mp4"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-i "F:/婚礼视频/VIDEO_TS/VTS_01_1.VOB" -vcodec x264Encoder -s 720x576 -r 25 -nal-hrd vbr -vbr_q 25 -b:v 256000 -acodec libvo_aacenc -strict experimental -ar 44100 -ac 2 -b:a 72000 -sample_fmt s16 -copyts -y "F:/婚礼视频/VIDEO_TS/婚礼视频01.mp4"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerCommandArguments>"-i" "D:/AVTestFile/AVNormal/洛杉矶之战DVD中字.rmvb" "-vcodec" "x264Encoder" "-s" "1920x1080" "-nal-hrd" "vbr" "-profile:v" "high" "-level:v" "5.1" "-r:v" "30" "-an" "-y" "D:/AVTestFile/OutPut/jingyizhilv.mp4"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-i "D:/AVTestFile/AVNormal/52届格莱美现场原始.mp4" -vcodec x265Encoder -s 1280x720 -r 25 -nal-hrd vbr -vbr_q 5 -b:v 256000 -an -copyts -y "D:/AVTestFile/OutPut/lsm_sample.h265"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

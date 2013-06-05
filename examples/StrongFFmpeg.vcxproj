@@ -170,7 +170,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\inc\libavutil\pixdesc.c" />
     <ClCompile Include="cmdutils.c" />
     <ClCompile Include="ffmpeg.cpp" />
     <ClCompile Include="ffmpeg_filter.cpp" />

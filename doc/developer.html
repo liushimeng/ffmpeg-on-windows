@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created on February 23, 2013 by texi2html 1.82 -->
+<!-- Created on May 13, 2013 by texi2html 1.82 -->
 <!--
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
@@ -57,6 +57,13 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
     <li><a name="toc-Regression-tests-1" href="#Regression-tests-1">1.10 Regression tests</a>
     <ul class="toc">
       <li><a name="toc-Adding-files-to-the-fate_002dsuite-dataset" href="#Adding-files-to-the-fate_002dsuite-dataset">1.10.1 Adding files to the fate-suite dataset</a></li>
+      <li><a name="toc-Visualizing-Test-Coverage" href="#Visualizing-Test-Coverage">1.10.2 Visualizing Test Coverage</a></li>
+      <li><a name="toc-Using-Valgrind" href="#Using-Valgrind">1.10.3 Using Valgrind</a></li>
+    </ul></li>
+    <li><a name="toc-Release-process-1" href="#Release-process-1">1.11 Release process</a>
+    <ul class="toc">
+      <li><a name="toc-Criteria-for-Point-Releases-1" href="#Criteria-for-Point-Releases-1">1.11.1 Criteria for Point Releases</a></li>
+      <li><a name="toc-Release-Checklist" href="#Release-Checklist">1.11.2 Release Checklist</a></li>
     </ul>
 </li>
   </ul>
@@ -220,13 +227,16 @@ for example structs and enums; they should always be in the CamelCase
 <li>
 For local variables no prefix is required.
 </li><li>
-For variables and functions declared as <code>static</code> no prefix is required.
+For file-scope variables and functions declared as <code>static</code>, no prefix
+is required.
 </li><li>
-For variables and functions used internally by a library an <code>ff_</code>
-prefix should be used, e.g. &lsquo;<samp>ff_w64_demuxer</samp>&rsquo;.
+For variables and functions visible outside of file scope, but only used
+internally by a library, an <code>ff_</code> prefix should be used,
+e.g. &lsquo;<samp>ff_w64_demuxer</samp>&rsquo;.
 </li><li>
-For variables and functions used internally across multiple libraries, use
-<code>avpriv_</code>. For example, &lsquo;<samp>avpriv_aac_parse_header</samp>&rsquo;.
+For variables and functions visible outside of file scope, used internally
+across multiple libraries, use <code>avpriv_</code> as prefix, for example,
+&lsquo;<samp>avpriv_aac_parse_header</samp>&rsquo;.
 </li><li>
 Each library has its own prefix for public symbols, in addition to the
 commonly used <code>av_</code> (<code>avformat_</code> for libavformat,
@@ -267,7 +277,7 @@ set softtabstop=4
 set cindent
 set cinoptions=(0
 &quot; Allow tabs in Makefiles.
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=8
+autocmd FileType make,automake set noexpandtab shiftwidth=8 softtabstop=8
 &quot; Trailing whitespace and tabs are forbidden, so highlight them.
 highlight ForbiddenWhitespace ctermbg=red guibg=red
 match ForbiddenWhitespace /\s\+$\|\t/
@@ -647,5 +657,134 @@ message or introductionary message for the patch series that you post to
 the ffmpeg-devel mailing list, a direct link to download the sample media.
 </p>
 
+<a name="Visualizing-Test-Coverage"></a>
+<h3 class="subsection"><a href="developer.html#toc-Visualizing-Test-Coverage">1.10.2 Visualizing Test Coverage</a></h3>
+
+<p>The FFmpeg build system allows visualizing the test coverage in an easy
+manner with the coverage tools <code>gcov</code>/<code>lcov</code>.  This involves
+the following steps:
+</p>
+<ol>
+<li>
+    Configure to compile with instrumentation enabled:
+    <code>configure --toolchain=gcov</code>.
+</li><li>
+    Run your test case, either manually or via FATE. This can be either
+    the full FATE regression suite, or any arbitrary invocation of any
+    front-end tool provided by FFmpeg, in any combination.
+</li><li>
+    Run <code>make lcov</code> to generate coverage data in HTML format.
+</li><li>
+    View <code>lcov/index.html</code> in your preferred HTML viewer.
+</li></ol>
+
+<p>You can use the command <code>make lcov-reset</code> to reset the coverage
+measurements. You will need to rerun <code>make lcov</code> after running a
+new test.
+</p>
+<a name="Using-Valgrind"></a>
+<h3 class="subsection"><a href="developer.html#toc-Using-Valgrind">1.10.3 Using Valgrind</a></h3>
+
+<p>The configure script provides a shortcut for using valgrind to spot bugs
+related to memory handling. Just add the option
+<code>--toolchain=valgrind-memcheck</code> to your configure line, and
+reasonable defaults will be set for running FATE under the supervision
+of the <strong>memcheck</strong> tool of the valgrind suite.
+</p>
+<p>In case you need finer control over how valgrind is invoked, use the
+<code>--target-exec='valgrind &lt;your_custom_valgrind_options&gt;</code> option in
+your configure line instead.
+</p>
+<p><a name="Release-process"></a>
+</p><a name="Release-process-1"></a>
+<h2 class="section"><a href="developer.html#toc-Release-process-1">1.11 Release process</a></h2>
+
+<p>FFmpeg maintains a set of <strong>release branches</strong>, which are the
+recommended deliverable for system integrators and distributors (such as
+Linux distributions, etc.). At regular times, a <strong>release
+manager</strong> prepares, tests and publishes tarballs on the
+<a href="http://ffmpeg.org">http://ffmpeg.org</a> website.
+</p>
+<p>There are two kinds of releases:
+</p>
+<ol>
+<li>
+    <strong>Major releases</strong> always include the latest and greatest
+    features and functionality.
+</li><li>
+    <strong>Point releases</strong> are cut from <strong>release</strong> branches,
+    which are named <code>release/X</code>, with <code>X</code> being the release
+    version number.
+</li></ol>
+
+<p>Note that we promise to our users that shared libraries from any FFmpeg
+release never break programs that have been <strong>compiled</strong> against
+previous versions of <strong>the same release series</strong> in any case!
+</p>
+<p>However, from time to time, we do make API changes that require adaptations
+in applications. Such changes are only allowed in (new) major releases and
+require further steps such as bumping library version numbers and/or
+adjustments to the symbol versioning file. Please discuss such changes
+on the <strong>ffmpeg-devel</strong> mailing list in time to allow forward planning.
+</p>
+<p><a name="Criteria-for-Point-Releases"></a>
+</p><a name="Criteria-for-Point-Releases-1"></a>
+<h3 class="subsection"><a href="developer.html#toc-Criteria-for-Point-Releases-1">1.11.1 Criteria for Point Releases</a></h3>
+
+<p>Changes that match the following criteria are valid candidates for
+inclusion into a point release:
+</p>
+<ol>
+<li>
+    Fixes a security issue, preferably identified by a <strong>CVE
+    number</strong> issued by <a href="http://cve.mitre.org/">http://cve.mitre.org/</a>.
+</li><li>
+    Fixes a documented bug in <a href="https://ffmpeg.org/trac/ffmpeg">https://ffmpeg.org/trac/ffmpeg</a>.
+</li><li>
+    Improves the included documentation.
+</li><li>
+    Retains both source code and binary compatibility with previous
+    point releases of the same release branch.
+</li></ol>
+
+<p>The order for checking the rules is (1 OR 2 OR 3) AND 4.
+</p>
+
+<a name="Release-Checklist"></a>
+<h3 class="subsection"><a href="developer.html#toc-Release-Checklist">1.11.2 Release Checklist</a></h3>
+
+<p>The release process involves the following steps:
+</p>
+<ol>
+<li>
+    Ensure that the &lsquo;<tt>RELEASE</tt>&rsquo; file contains the version number for
+    the upcoming release.
+</li><li>
+    Add the release at <a href="https://ffmpeg.org/trac/ffmpeg/admin/ticket/versions">https://ffmpeg.org/trac/ffmpeg/admin/ticket/versions</a>.
+</li><li>
+    Announce the intent to do a release to the mailing list.
+</li><li>
+    Make sure all relevant security fixes have been backported. See
+    <a href="https://ffmpeg.org/security.html">https://ffmpeg.org/security.html</a>.
+</li><li>
+    Ensure that the FATE regression suite still passes in the release
+    branch on at least <strong>i386</strong> and <strong>amd64</strong>
+    (cf. <a href="#Regression-tests">Regression tests</a>).
+</li><li>
+    Prepare the release tarballs in <code>bz2</code> and <code>gz</code> formats, and
+    supplementing files that contain <code>gpg</code> signatures
+</li><li>
+    Publish the tarballs at <a href="http://ffmpeg.org/releases">http://ffmpeg.org/releases</a>. Create and
+    push an annotated tag in the form <code>nX</code>, with <code>X</code>
+    containing the version number.
+</li><li>
+    Propose and send a patch to the <strong>ffmpeg-devel</strong> mailing list
+    with a news entry for the website.
+</li><li>
+    Publish the news entry.
+</li><li>
+    Send announcement to the mailing list.
+</li></ol>
+
 <footer class="footer pagination-right">
-<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>February 23, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>
+<span class="label label-info">This document was generated by <em>Kyle Schwarz</em> on <em>May 13, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.</span></footer></div>

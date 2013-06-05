@@ -2,7 +2,7 @@
 // ffparse.cpp : 定义应用程序的类行为。
 //
 
-#include "stdafx_ffparse.h"
+#include "ffparse_stdafx.h"
 #include "ffparse.h"
 #include "ffparseDlg.h"
 

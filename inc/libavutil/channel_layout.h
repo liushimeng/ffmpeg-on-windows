@@ -23,7 +23,6 @@
 #define AVUTIL_CHANNEL_LAYOUT_H
 
 #include <stdint.h>
-#include "bprint.h"
 
 /**
  * @file

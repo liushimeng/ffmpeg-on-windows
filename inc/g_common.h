@@ -23,6 +23,7 @@
 #define CONFIG_SWRESAMPLE				1
 #define CONFIG_AVDEVICE					1
 #define CONFIG_POSTPROC					1
+#define CONFIG_AVRESAMPLE				0
 #ifndef CONFIG_NETWORK
 #define CONFIG_NETWORK					0
 #endif
@@ -49,6 +50,7 @@
 
 #define CONFIG_RTSP_DEMUXER				1		//RTSP Demuxer
 #define CONFIG_MMSH_PROTOCOL			0		//MMSH Protocol
+#define CONFIG_OPENCL					0		//Opencl
 
 //ºê¿ª¹Ø
 #if CONFIG_LIBX264_ENCODER

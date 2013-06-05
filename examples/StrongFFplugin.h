@@ -27,12 +27,13 @@ extern "C" {
 
 
 #define STRONGFFPLUGIN_VALID_DATE_YEAR		2013		//有效期 年
-#define STRONGFFPLUGIN_VALID_DATE_MONTH		6			//有效期 月
+#define STRONGFFPLUGIN_VALID_DATE_MONTH		8			//有效期 月
 #define STRONGFFPLUGIN_VALID_DATE_DAY		1			//有效期 日 
 
 
 #define X264_ENCODER_NAME					"x264Encoder"		//x264视频编码器	
-#define X265_ENCODER_NAME					"x265Encoder"		//x265视频编码器	
+#define X265_ENCODER_NAME					"x265Encoder"		//x265视频编码器
+#define H265_DECODER_NAME					"h265"				//h265视频解码器
 #define INTEL_AVC_DECODER_NAME				"intelAVCDecoder"	//intel视频解码器
 #define INTEL_ENCODER_NAME					"intelEncoder"		//intel视频编码器
 #define LIBAACPLUS_ENCODER_NAME				"libaacplus"		//aacplus音频编码器
